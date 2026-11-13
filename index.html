@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Where the Lenny 100 stands</title>
+<meta name="description" content="A landscape of the 99 companies on the Lenny 100 list: the map, how solid the numbers are, value versus growth, business models and five findings.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23a23b30'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root { color-scheme: light;
+  --bg:#f2f2f0; --surface:#fff; --surface2:#f0f0ee; --surface3:#e5e5e2; --border:#dcdcd8; --border2:#c6c6c1;
+  --text:#1d1e21; --text2:#54565b; --text3:#85878c; --accent:#a23b30; --accent-dim:#852f26; --accent-glow:rgba(162,59,48,.08);
+  --g1:#3a3c40; --g2:#45474b; --g3:#6b6d72; --g4:#8d8f94; --g5:#b4b6ba;
+  --radius:4px; --radius-lg:6px; --shadow-md:0 3px 12px rgba(29,30,33,.07);
+  --font:'IBM Plex Sans',system-ui,sans-serif; --serif:'Source Serif 4',Georgia,serif; --mono:'IBM Plex Mono',Menlo,monospace;
+  /* page tokens mapped onto the theme */
+  --color-fg: var(--text); --color-fg-muted: var(--text2); --color-bg: var(--bg); --color-panel: var(--surface); --color-border-line: var(--border);
+  --color-ok: var(--accent);
+  --font-anthropic-sans: var(--font); --font-anthropic-serif: var(--serif);
+  --cds-font-size-caption: 12px; --cds-font-size-body: 13px; --cds-font-size-heading: 16px; --cds-font-size-title: 20px; --cds-font-weight-medium: 600;
+  --cds-radius: var(--radius); --cds-pad-lg: 18px;
+  --cds-chart-grid: var(--surface3); --cds-chart-axis: var(--border2); --cds-chart-reference: var(--g4); --cds-text-secondary: var(--text2);
+  --cds-surface-popover: var(--surface); --cds-border: var(--border); --cds-shadow-popover: var(--shadow-md); }
+* { box-sizing: border-box; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); font-size: 13px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.l1-page { padding: max(32px, env(safe-area-inset-top, 0px)) clamp(16px, 4vw, 48px) max(48px, env(safe-area-inset-bottom, 0px)); }
+.l1-page .l1 { --l1-mono: var(--mono); }
+.l1-in { margin: 0 auto; }
+.l1 a:hover { color: var(--accent) !important; }
+.dash-select { font: 13px var(--font); color: var(--text); background-color: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius); padding: 6px 10px; }
+.l1-foot { margin-top: 40px; font-family: var(--mono); font-size: 11px; color: var(--text2); }
+.l1-foot a { color: inherit; }
+
+.l1 { --l1-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace; position: relative; isolation: isolate; font-family: var(--font-anthropic-sans); color: var(--color-fg); container-type: inline-size; }
+.l1-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.l1-bg::before, .l1-bg::after { content: ""; position: absolute; inset: -120px; }
+.l1-bg::before { background-image: radial-gradient(circle, var(--color-border-line) 1px, transparent 1.4px); background-size: 28px 28px; opacity: .55; }
+.l1-bg::after { background-image: linear-gradient(var(--color-border-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-border-line) 1px, transparent 1px); background-size: 140px 140px; opacity: .22; }
+.l1-bg i { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-fg-muted), transparent); opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .l1-bg::before { animation: l1-drift 120s linear infinite; }
+  .l1-bg::after { animation: l1-drift-b 200s linear infinite; }
+  .l1-bg i { animation: l1-scan 26s ease-in-out infinite; }
+}
+@keyframes l1-drift { to { transform: translate(28px, 56px); } }
+@keyframes l1-drift-b { to { transform: translate(-140px, 140px); } }
+@keyframes l1-scan { 0% { top: 0; opacity: 0; } 10% { opacity: .18; } 90% { opacity: .18; } 100% { top: 100%; opacity: 0; } }
+
+.l1-shell { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; max-width: 1480px; margin: 0 auto; }
+.l1-side, .l1-rail { min-width: 0; }
+.l1-rail { display: none; }
+.l1-side { border-bottom: 1px solid var(--color-border-line); padding-bottom: 10px; }
+.l1-side ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.l1-side ol ol { display: none; }
+@container (min-width: 900px) {
+  .l1-shell { grid-template-columns: 184px minmax(0, 1fr); }
+  .l1-side { position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px); overflow-y: auto; border-bottom: 0; border-right: 1px solid var(--color-border-line); padding: 4px 16px 4px 0; }
+  .l1-side ol { display: block; }
+  .l1-side ol ol { display: block; margin: 2px 0 8px 22px; }
+}
+@container (min-width: 1240px) {
+  .l1-shell { grid-template-columns: 184px minmax(0, 1fr) 300px; }
+  .l1-rail { display: block; position: sticky; top: 16px; align-self: start; max-height: calc(100vh - 32px); overflow-y: auto; }
+}
+.l1-side .l1-label { display: block; margin: 0 0 12px; }
+.l1-side a { display: block; font-family: var(--l1-mono); font-size: 12px; line-height: 1.5; padding: 3px 0; color: var(--color-fg-muted); text-decoration: none; }
+.l1-side ol ol a { font-family: var(--font-anthropic-sans); font-size: 12px; padding: 2px 0; }
+.l1-side a:hover { color: var(--color-fg); }
+.l1-side a.is-active { color: var(--color-fg); font-weight: 600; }
+.l1-rail-panel { display: flex; flex-direction: column; gap: 14px; background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: 4px; padding: 16px; }
+.l1-rail-panel h3 { font-family: var(--font-anthropic-serif); font-weight: 600; font-size: 17px; margin: 0; }
+.l1-rail .l1-chart { min-height: 120px; }
+.l1-rail table { font-size: 12px; }
+.l1-meter { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; font-size: 12px; align-items: center; }
+.l1-meter .trk { grid-column: 1 / -1; height: 4px; background: var(--color-border-line); border-radius: 2px; overflow: hidden; }
+.l1-meter .trk b { display: block; height: 100%; border-radius: 2px; }
+.l1-meter .v { font-family: var(--l1-mono); font-size: 11px; color: var(--color-fg-muted); }
+.l1-onelines { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.5; }
+.l1-onelines b { font-family: var(--l1-mono); font-weight: 500; }
+
+.l1-main { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
+.l1 h1 { font-family: var(--font-anthropic-serif); font-weight: 600; font-size: clamp(28px, 4vw, 40px); line-height: 1.1; margin: 0; letter-spacing: -.005em; text-wrap: balance; }
+.l1 h2 { font-family: var(--font-anthropic-serif); font-weight: 600; font-size: var(--cds-font-size-title); margin: 0; letter-spacing: -.005em; text-wrap: balance; }
+.l1 h3 { font-size: 15px; font-weight: var(--cds-font-weight-medium); margin: 0 0 6px; }
+.l1 p { margin: 0; line-height: 1.6; max-width: 70ch; }
+.l1-label, .l1-fig { font-family: var(--l1-mono); }
+.l1-label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-fg-muted); }
+.l1-fig { font-size: 11px; color: var(--color-fg-muted); letter-spacing: .04em; }
+.l1-cap { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.5; }
+.l1-head { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+.l1-lede { font-size: 17px; max-width: 64ch; }
+.l1-lede b { font-family: var(--l1-mono); font-weight: 500; font-size: .95em; }
+.l1-sec { display: flex; flex-direction: column; gap: 22px; scroll-margin-top: 16px; }
+.l1-sec [id] { scroll-margin-top: 16px; }
+.l1-sec-h { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--color-fg); padding-top: 14px; }
+.l1-sub { font-family: var(--font-anthropic-serif); font-weight: 600; font-size: 19px; margin: 6px 0 0; }
+.l1-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); border-top: 1px solid var(--color-border-line); border-left: 1px solid var(--color-border-line); }
+.l1-tile { border-right: 1px solid var(--color-border-line); border-bottom: 1px solid var(--color-border-line); padding: 16px 18px; background: var(--color-panel); min-width: 0; }
+.l1-big { font-family: var(--font-anthropic-serif); font-weight: 600; font-size: 32px; line-height: 1.1; margin: 8px 0 4px; font-variant-numeric: tabular-nums; }
+.l1-panel { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: 4px; padding: 18px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.l1-two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: start; }
+.l1-three { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.l1-chart { position: relative; min-height: 180px; }
+.l1-land { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; position: relative; }
+.l1-layer { display: flex; flex-direction: column; gap: 8px; }
+.l1-layer-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.l1-layer-h b { font-weight: var(--cds-font-weight-medium); font-size: 14px; }
+.l1-layer-h span { font-family: var(--l1-mono); font-size: 11px; color: var(--color-fg-muted); }
+.l1-chips { display: flex; flex-direction: column; }
+.l1-chip { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 5px 0 5px 8px; border-bottom: 1px dotted var(--color-border-line); font-size: 13px; cursor: default; }
+.l1-chip:last-child { border-bottom: 0; }
+.l1-chip:hover, .l1-chip:focus { background: var(--color-bg); outline: none; }
+.l1-chip .m { font-family: var(--l1-mono); font-size: 11px; color: var(--color-fg-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.l1-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); box-shadow: var(--cds-shadow-popover); border-radius: 4px; padding: 8px 10px; font-size: 12px; max-width: 250px; z-index: 5; line-height: 1.45; }
+.l1-tip .t { font-weight: var(--cds-font-weight-medium); }
+.l1-tip .s { color: var(--cds-text-secondary); }
+.l1 svg text { font-size: 11px; fill: var(--cds-text-secondary); font-family: var(--l1-mono); }
+.l1 svg .l1-lab { fill: var(--color-fg); font-family: var(--font-anthropic-sans); font-size: 12px; }
+.l1-scroll { overflow-x: auto; }
+.l1 table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.l1 th { text-align: left; font-family: var(--l1-mono); font-size: 11px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; color: var(--color-fg-muted); border-bottom: 1px solid var(--color-fg); padding: 6px 10px 6px 0; white-space: nowrap; }
+.l1 td { border-bottom: 1px solid var(--color-border-line); padding: 7px 10px 7px 0; vertical-align: top; }
+.l1 td.r, .l1 th.r { text-align: right; font-family: var(--l1-mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.l1 td.yes { font-family: var(--l1-mono); font-size: 12px; font-weight: 600; }
+.l1 td.no { color: var(--color-fg-muted); font-family: var(--l1-mono); font-size: 12px; }
+.l1-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.l1-finding { display: flex; flex-direction: column; gap: 14px; padding-top: 6px; }
+.l1-finding > h3 { font-family: var(--font-anthropic-serif); font-weight: 600; font-size: 19px; margin: 0; text-wrap: balance; }
+.l1-finding > h3 .l1-fig { margin-right: 8px; font-size: 12px; }
+.l1 details { border-top: 1px solid var(--color-border-line); padding-top: 12px; }
+.l1 details summary { cursor: pointer; font-family: var(--l1-mono); font-size: 12px; color: var(--color-fg-muted); }
+.l1 details ul { margin: 10px 0 0; padding-left: 18px; line-height: 1.6; max-width: 80ch; font-size: 13px; }
+[data-dash-source-state=refreshing] { opacity: .5; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+</head>
+<body>
+<main class="l1-page">
+<div class="l1">
+  <div class="l1-bg" aria-hidden="true"><i></i></div>
+  <div class="l1-shell">
+
+  <nav class="l1-side" aria-label="Contents">
+    <span class="l1-label">Contents</span>
+    <ol>
+      <li><a href="#top" data-nav="top">00 Overview</a></li>
+      <li><a href="#map" data-nav="map">01 The map</a>
+        <ol><li><a href="#scatter-card">Size against speed</a></li><li><a href="#layers">The twelve layers</a></li></ol></li>
+      <li><a href="#evidence" data-nav="evidence">02 How solid the numbers are</a>
+        <ol><li><a href="#evidence-kinds">Three kinds of evidence</a></li><li><a href="#podcast-card">Podcast coverage</a></li></ol></li>
+      <li><a href="#value-growth" data-nav="value-growth">03 Value and growth</a>
+        <ol><li><a href="#value-card">Two rankings</a></li><li><a href="#slope-card">Where they diverge</a></li><li><a href="#meaning">What it means</a></li></ol></li>
+      <li><a href="#money" data-nav="money">04 How they make money</a>
+        <ol><li><a href="#model-card">Revenue models</a></li><li><a href="#metric-guide">What to measure</a></li><li><a href="#buyer-card">Who pays</a></li></ol></li>
+      <li><a href="#findings" data-nav="findings">05 Five findings</a>
+        <ol><li><a href="#finding-concentration">The total conceals the list</a></li><li><a href="#finding-size">Growth and size</a></li><li><a href="#finding-trend">Beating the trend</a></li><li><a href="#finding-races">Category races</a></li><li><a href="#finding-coverage">Who gets talked about</a></li><li><a href="#finding-small">Smaller patterns</a></li></ol></li>
+      <li><a href="#explore" data-nav="explore">06 All companies</a></li>
+    </ol>
+  </nav>
+
+  <main class="l1-main">
+  <header class="l1-head l1-sec" id="top">
+    <div class="l1-label">Lenny’s Jobs · Lenny 100 · November 2026</div>
+    <h1>The Lenny 100, mapped</h1>
+    <p class="l1-lede" id="takeaway"><b data-draw="num" data-source="summary" data-field="companies" data-row="0">—</b> companies, worth $<b data-draw="num" data-source="summary" data-field="total_t" data-row="0">—</b>T together. <b data-draw="num" data-source="summary" data-field="public_n" data-row="0">—</b> public giants account for <b data-draw="num" data-source="summary" data-field="public_share_pct" data-row="0">—</b>% of that value, and among private companies, model labs alone account for <b data-draw="num" data-source="summary" data-field="labs_share_private_pct" data-row="0">—</b>%. Hiring tells the opposite story: companies built around AI grew their headcount by a median <b data-draw="num" data-fmt="signed" data-source="summary" data-field="native_yoy" data-row="0">—</b>% last year, against <b data-draw="num" data-fmt="signed" data-source="summary" data-field="nonnative_yoy" data-row="0">—</b>% for everyone else.</p>
+    <div class="l1-tiles" id="kpis">
+      <div class="l1-tile" id="kpi-companies"><div class="l1-label">Companies</div><div class="l1-big" data-draw="num" data-source="summary" data-field="companies" data-row="0">—</div><div class="l1-cap">on the list, November 2026</div></div>
+      <div class="l1-tile" id="kpi-value"><div class="l1-label">Combined value</div><div class="l1-big">$<span data-draw="num" data-source="summary" data-field="total_t" data-row="0">—</span>T</div><div class="l1-cap">market caps and latest private rounds</div></div>
+      <div class="l1-tile" id="kpi-private"><div class="l1-label">Private value</div><div class="l1-big">$<span data-draw="num" data-source="summary" data-field="private_t" data-row="0">—</span>T</div><div class="l1-cap">across <span data-draw="num" data-source="summary" data-field="private_n" data-row="0">—</span> private companies</div></div>
+      <div class="l1-tile" id="kpi-growth"><div class="l1-label">Median hiring growth</div><div class="l1-big"><span data-draw="num" data-fmt="signed" data-source="summary" data-field="median_yoy" data-row="0">—</span>%</div><div class="l1-cap">headcount, year on year, where reported</div></div>
+    </div>
+  </header>
+
+  <section class="l1-sec" id="map">
+    <div class="l1-sec-h"><div class="l1-fig">01</div><h2>The map: twelve layers in five groups</h2></div>
+    <p>Read the list as a supply chain. Chips and power feed the GPU clouds, the clouds feed the model labs, and the labs feed the developer tools and applications built on top. A newer wave carries the same models into robots, vehicles, ships and weapons, while the money rails run beneath all of it.</p>
+    <div class="l1-panel" id="scatter-card">
+      <div class="l1-fig">Fig. 1 · Size against speed</div>
+      <p class="l1-cap">Each dot is a company, plotting valuation (log scale) against headcount growth over the past year. Labelled dots are the largest companies and the fastest hirers. <span data-draw="num" data-source="summary" data-field="scatter_excluded" data-row="0">—</span> companies lack one of the two figures and are not shown.</p>
+      <div class="l1-chart" id="scatter" data-draw="scatter" data-source="companies" style="min-height:340px"></div>
+    </div>
+    <h3 class="l1-sub" id="layers">The twelve layers</h3>
+    <p class="l1-cap">Each card lists a layer’s companies by valuation, with headcount growth alongside. Hover over a company for its description.</p>
+    <div class="l1-land" id="landscape" data-draw="landscape" data-source="companies by_layer"></div>
+  </section>
+
+  <section class="l1-sec" id="evidence">
+    <div class="l1-sec-h"><div class="l1-fig">02</div><h2>How solid are the numbers?</h2></div>
+    <div class="l1-three" id="evidence-kinds">
+      <div class="l1-panel"><h3>Market prices</h3><p class="l1-cap">Public companies are repriced every trading day by thousands of buyers and sellers. These are the firmest figures here, though they still carry the market’s mood.</p></div>
+      <div class="l1-panel"><h3>Last-round prices</h3><p class="l1-cap">A private valuation is a single negotiated price on a single day, often with terms that flatter the headline. It records what the most optimistic investor paid, not what the company would fetch in a sale.</p></div>
+      <div class="l1-panel"><h3>Headcount growth</h3><p class="l1-cap">Hiring is visible and hard to fake, which makes it the best common signal of momentum on the list. But it tracks ambition and funding, not revenue: a well-funded lab can triple its staff on capital alone.</p></div>
+    </div>
+    <div class="l1-tiles" id="evidence-tiles">
+      <div class="l1-tile" id="kpi-public"><div class="l1-label">Priced by public markets</div><div class="l1-big"><span data-draw="num" data-source="summary" data-field="public_n" data-row="0">—</span></div><div class="l1-cap"><span data-draw="num" data-source="summary" data-field="public_share_pct" data-row="0">—</span>% of combined value</div></div>
+      <div class="l1-tile" id="kpi-valdisc"><div class="l1-label">Valuation disclosed</div><div class="l1-big"><span data-draw="num" data-source="summary" data-field="val_disclosed_n" data-row="0">—</span></div><div class="l1-cap">of <span data-draw="num" data-source="summary" data-field="companies" data-row="0">—</span> companies</div></div>
+      <div class="l1-tile" id="kpi-yoydisc"><div class="l1-label">Growth reported</div><div class="l1-big"><span data-draw="num" data-source="summary" data-field="yoy_disclosed_n" data-row="0">—</span></div><div class="l1-cap">of <span data-draw="num" data-source="summary" data-field="companies" data-row="0">—</span> companies</div></div>
+      <div class="l1-tile" id="kpi-podcast"><div class="l1-label">On Lenny’s Podcast</div><div class="l1-big"><span data-draw="num" data-source="summary" data-field="podcast_n" data-row="0">—</span></div><div class="l1-cap">companies with at least one episode</div></div>
+    </div>
+    <div class="l1-panel" id="podcast-card">
+      <div class="l1-fig">Fig. 2 · Podcast episodes per company</div>
+      <p class="l1-cap">Episodes of Lenny’s Podcast featuring each company: a rough measure of where the list’s curator has first-hand knowledge. Coverage leans towards product-led software.</p>
+      <div class="l1-chart" id="podcast" data-draw="bars" data-source="companies" data-label="company" data-value="podcast_episodes" data-min="1" data-fmt="int"></div>
+    </div>
+  </section>
+
+  <section class="l1-sec" id="value-growth">
+    <div class="l1-sec-h"><div class="l1-fig">03</div><h2>Where the value is, and where the growth is</h2></div>
+    <p>The same twelve layers, ranked twice. Where the rankings diverge is where the bet lies: capital is paying today for compute, labs and defense, while the fastest-hiring teams are in data for AI, model labs and AI applications, the layers that turn models into finished work.</p>
+    <div class="l1-two" id="value-card">
+      <div class="l1-panel">
+        <div class="l1-fig">Fig. 3 · Combined valuation by layer</div>
+        <div class="l1-chart" id="value-bars" data-draw="bars" data-source="by_layer" data-label="layer" data-value="value_b" data-fmt="usd"></div>
+      </div>
+      <div class="l1-panel" id="growth-card">
+        <div class="l1-fig">Fig. 4 · Median headcount growth by layer</div>
+        <div class="l1-chart" id="growth-bars" data-draw="bars" data-source="by_layer" data-label="layer" data-value="median_yoy" data-fmt="pct"></div>
+      </div>
+    </div>
+    <div class="l1-panel" id="slope-card">
+      <div class="l1-fig">Fig. 5 · Rank by value against rank by hiring growth</div>
+      <p class="l1-cap">Each line is a layer, running from its rank by combined value (left) to its rank by median hiring growth (right). The red line is the layer that climbs furthest.</p>
+      <div class="l1-chart" id="slope" data-draw="slope" data-source="by_layer" style="min-height:330px"></div>
+    </div>
+    <div class="l1-tiles" id="native-tiles">
+      <div class="l1-tile" id="kpi-native"><div class="l1-label">Built around AI</div><div class="l1-big"><span data-draw="num" data-fmt="signed" data-source="summary" data-field="native_yoy" data-row="0">—</span>%</div><div class="l1-cap">median growth, <span data-draw="num" data-source="summary" data-field="native_n" data-row="0">—</span> companies</div></div>
+      <div class="l1-tile" id="kpi-nonnative"><div class="l1-label">Not built around AI</div><div class="l1-big"><span data-draw="num" data-fmt="signed" data-source="summary" data-field="nonnative_yoy" data-row="0">—</span>%</div><div class="l1-cap">median growth, <span data-draw="num" data-source="summary" data-field="nonnative_n" data-row="0">—</span> companies</div></div>
+      <div class="l1-tile" id="kpi-labs"><div class="l1-label">Labs’ share of private value</div><div class="l1-big"><span data-draw="num" data-source="summary" data-field="labs_share_private_pct" data-row="0">—</span>%</div><div class="l1-cap">led by OpenAI and Anthropic</div></div>
+    </div>
+    <div class="l1-three" id="meaning">
+      <div class="l1-panel"><h3>For people choosing where to work</h3><p class="l1-cap">The fastest hiring is at smaller AI-built companies, where each hire shapes the product. Established names offer scale and stability rather than the steepest learning curve.</p></div>
+      <div class="l1-panel"><h3>For buyers</h3><p class="l1-cap">Vendors increasingly charge for results (a resolved ticket, a drafted contract, a shipped app) rather than for seats. That shifts risk to the vendor and puts the focus on outcomes.</p></div>
+      <div class="l1-panel"><h3>For investors</h3><p class="l1-cap">Value is concentrated in a handful of compute owners and labs. Much of the list is a wager that value will spread to the companies applying models, and prices do not yet reflect it.</p></div>
+    </div>
+  </section>
+
+  <section class="l1-sec" id="money">
+    <div class="l1-sec-h"><div class="l1-fig">04</div><h2>How they make money</h2></div>
+    <p>Judging a GPU cloud and a legal-AI startup by hiring alone would mislead. Grouping the companies by how they earn revenue shows which yardstick suits each.</p>
+    <div class="l1-two" id="model-card">
+      <div class="l1-panel l1-scroll">
+        <div class="l1-fig">Table 1 · Revenue models on the list</div>
+        <table data-source="by_model" data-row-key="revenue_model">
+          <thead><tr><th data-field="revenue_model">Revenue model</th><th class="r" data-field="companies">Cos.</th><th class="r" data-field="value_b">Value ($B)</th><th class="r" data-field="median_yoy">Growth (%)</th></tr></thead>
+          <tbody data-draw="rows" data-source="by_model" data-key="revenue_model" data-cols="revenue_model:text,companies:int,value_b:comma,median_yoy:signed"></tbody>
+        </table>
+      </div>
+      <div class="l1-panel">
+        <div class="l1-fig">Fig. 6 · Median hiring growth by revenue model</div>
+        <div class="l1-chart" id="model-bars" data-draw="bars" data-source="by_model" data-label="revenue_model" data-value="median_yoy" data-fmt="pct"></div>
+        <p class="l1-cap">Outcome-based pricing leads, though it covers only three companies.</p>
+      </div>
+    </div>
+    <div class="l1-panel l1-scroll" id="metric-guide">
+      <div class="l1-fig">Table 2 · What to measure for each model</div>
+      <table>
+        <thead><tr><th>Revenue model</th><th>Measure</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Usage-metered</td><td>Net revenue retention; gross margin after compute</td><td>Revenue rises with customers’ usage, and so does the GPU bill.</td></tr>
+          <tr><td>Subscription / seats</td><td>Seat expansion; customer retention</td><td>AI that replaces work can shrink seat counts, so watch whether pricing adapts.</td></tr>
+          <tr><td>Outcome-based</td><td>Resolution rate; cost per outcome</td><td>The vendor is paid only when the work is done, so accuracy is revenue.</td></tr>
+          <tr><td>Transaction take rate</td><td>Volume × take rate; loss rates</td><td>Growth comes from money flowing through, not from hiring.</td></tr>
+          <tr><td>Hardware &amp; physical goods</td><td>Units shipped; unit cost; capital spending</td><td>Factories and supply chains set the pace.</td></tr>
+          <tr><td>Government contracts</td><td>Backlog; programs of record</td><td>Pilots are cheap; a program of record means years of revenue.</td></tr>
+          <tr><td>Data &amp; services contracts</td><td>Contract value per lab; customer concentration</td><td>A handful of frontier labs make up most of the market.</td></tr>
+          <tr><td>Research stage</td><td>Talent; secured compute; milestones</td><td>Revenue is not yet the point; capability is.</td></tr>
+          <tr><td>Advertising</td><td>Active professional users; revenue per user</td><td>Sponsors pay for clinicians’ free access.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="l1-two" id="buyer-card">
+      <div class="l1-panel l1-scroll">
+        <div class="l1-fig">Table 3 · Who pays</div>
+        <table data-source="by_buyer" data-row-key="primary_buyer">
+          <thead><tr><th data-field="primary_buyer">Main buyer</th><th class="r" data-field="companies">Cos.</th><th class="r" data-field="value_b">Value ($B)</th><th class="r" data-field="median_yoy">Growth (%)</th></tr></thead>
+          <tbody data-draw="rows" data-source="by_buyer" data-key="primary_buyer" data-cols="primary_buyer:text,companies:int,value_b:comma,median_yoy:signed"></tbody>
+        </table>
+        <p class="l1-cap">Developers and AI labs are now buyers in their own right.</p>
+      </div>
+      <div class="l1-panel">
+        <div class="l1-fig">Fig. 7 · Companies by main buyer</div>
+        <div class="l1-chart" id="buyer-bars" data-draw="bars" data-source="by_buyer" data-label="primary_buyer" data-value="companies" data-fmt="int"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="l1-sec" id="findings">
+    <div class="l1-sec-h"><div class="l1-fig">05</div><h2>Five findings from a second look</h2></div>
+    <p>A second pass that starts from the numbers rather than the categories, and asks five questions in turn: how concentrated is the value, does size predict growth, who outperforms the trend, do new categories have a single winner, and which companies get talked about?</p>
+
+    <div class="l1-finding" id="finding-concentration">
+      <h3><span class="l1-fig">5.1</span>The total conceals the list</h3>
+      <div class="l1-tiles">
+        <div class="l1-tile" id="kpi-top5"><div class="l1-label">Top 5 share of value</div><div class="l1-big"><span data-draw="num" data-source="concentration" data-field="top5_share_pct" data-row="0">—</span>%</div></div>
+        <div class="l1-tile" id="kpi-top10"><div class="l1-label">Top 10 share</div><div class="l1-big"><span data-draw="num" data-source="concentration" data-field="top10_share_pct" data-row="0">—</span>%</div></div>
+        <div class="l1-tile" id="kpi-bottom"><div class="l1-label">Bottom half’s share</div><div class="l1-big"><span data-draw="num" data-source="concentration" data-field="bottom_half_share_pct" data-row="0">—</span>%</div><div class="l1-cap"><span data-draw="num" data-source="concentration" data-field="bottom_half_n" data-row="0">—</span> companies combined</div></div>
+        <div class="l1-tile" id="kpi-median-val"><div class="l1-label">Median valuation</div><div class="l1-big">$<span data-draw="num" data-source="concentration" data-field="median_valuation_b" data-row="0">—</span>B</div><div class="l1-cap">the true middle of the list</div></div>
+      </div>
+      <p class="l1-cap">Any total or average here really describes the five largest companies. Shares are calculated over companies with a disclosed valuation.</p>
+    </div>
+
+    <div class="l1-finding" id="finding-size">
+      <h3><span class="l1-fig">5.2</span>Growth holds steady, then falls away beyond $30B</h3>
+      <div class="l1-two">
+        <div class="l1-panel" id="size-card">
+          <div class="l1-fig">Fig. 8 · Median hiring growth by valuation band</div>
+          <div class="l1-chart" id="size-bars" data-draw="bars" data-source="by_size" data-label="band" data-value="median_yoy" data-fmt="pct" data-keep-order="1"></div>
+        </div>
+        <div class="l1-panel" id="size-read">
+          <p>Below $30B, the median company grew its headcount by <b data-draw="num" data-fmt="signed" data-source="size_stats" data-field="under30_yoy" data-row="0">—</b>%. Above it, the figure is <b data-draw="num" data-fmt="signed" data-source="size_stats" data-field="over30_yoy" data-row="0">—</b>%.</p>
+          <p>Among private companies alone, size barely predicts growth: the rank correlation is <b data-draw="num" data-source="size_stats" data-field="private_rank_corr" data-row="0">—</b>, where 0 means no relationship and −1 a perfect inverse one. A $2B company and a $25B company are in the same phase; their layer separates them more than their size does.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="l1-finding" id="finding-trend">
+      <h3><span class="l1-fig">5.3</span>Who outperforms the trend</h3>
+      <p class="l1-cap">Expected growth comes from a straight line fitted through every company’s growth against its valuation (log scale); the gap is actual minus expected, in percentage points. Above the line sit agents that complete real work and the search and inference infrastructure they run on. Below it are mostly software and fintech companies that predate the AI wave.</p>
+      <div class="l1-panel" id="trend-plot-card">
+        <div class="l1-fig">Fig. 9 · Growth against the size trend</div>
+        <div class="l1-chart" id="trend-plot" data-draw="trendplot" data-source="trend" style="min-height:320px"></div>
+        <p class="l1-cap">Red: the eight furthest above the line. Dark grey: the eight furthest below.</p>
+      </div>
+      <div class="l1-two">
+        <div class="l1-panel l1-scroll" id="trend-above">
+          <div class="l1-fig">Table 4 · Furthest above the trend</div>
+          <table data-source="trend" data-row-key="company">
+            <thead><tr><th data-field="company">Company</th><th class="r" data-field="valuation_b">Value ($B)</th><th class="r" data-field="headcount_yoy">Actual</th><th class="r" data-field="expected_yoy">Expected</th><th class="r" data-field="gap">Gap</th></tr></thead>
+            <tbody data-draw="trendtable" data-dir="top" data-count="8"></tbody>
+          </table>
+        </div>
+        <div class="l1-panel l1-scroll" id="trend-below">
+          <div class="l1-fig">Table 5 · Furthest below the trend</div>
+          <table data-source="trend" data-row-key="company">
+            <thead><tr><th data-field="company">Company</th><th class="r" data-field="valuation_b">Value ($B)</th><th class="r" data-field="headcount_yoy">Actual</th><th class="r" data-field="expected_yoy">Expected</th><th class="r" data-field="gap">Gap</th></tr></thead>
+            <tbody data-draw="trendtable" data-dir="bottom" data-count="8"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="l1-finding" id="finding-races">
+      <h3><span class="l1-fig">5.4</span>New categories are races, not monopolies</h3>
+      <p>In <b data-draw="num" data-source="race_summary" data-field="challenger_ahead" data-row="0">—</b> of <b data-draw="num" data-source="race_summary" data-field="races" data-row="0">—</b> categories with at least two funded players, a challenger is out-hiring the most valuable incumbent. Being first buys a lead, not a moat.</p>
+      <div class="l1-panel" id="race-plot-card">
+        <div class="l1-fig">Fig. 10 · Hiring growth: most valuable player against fastest hirer</div>
+        <div class="l1-chart" id="race-plot" data-draw="dumbbell" data-source="races" style="min-height:300px"></div>
+        <p class="l1-cap">Grey dot: the category’s most valuable company. Red dot: a challenger hiring faster. A lone grey dot means the leader is also the fastest hirer.</p>
+      </div>
+      <div class="l1-panel l1-scroll" id="races-table">
+        <div class="l1-fig">Table 6 · Category races</div>
+        <table data-source="races" data-row-key="race">
+          <thead><tr><th data-field="race">Category</th><th class="r" data-field="members">Players</th><th data-field="leader">Most valuable</th><th class="r" data-field="leader_yoy">Growth</th><th data-field="fastest">Fastest hirer</th><th class="r" data-field="fastest_yoy">Growth</th><th data-field="challenger_ahead">Challenger ahead?</th></tr></thead>
+          <tbody data-draw="racetable"></tbody>
+        </table>
+        <p class="l1-cap">Categories group companies that sell essentially the same thing; the grouping is an editorial judgement. Players counts only companies with both a valuation and a growth figure.</p>
+      </div>
+    </div>
+
+    <div class="l1-finding" id="finding-coverage">
+      <h3><span class="l1-fig">5.5</span>The best-known companies are the slowest-growing</h3>
+      <div class="l1-tiles">
+        <div class="l1-tile" id="kpi-featured"><div class="l1-label">Featured on Lenny’s Podcast</div><div class="l1-big"><span data-draw="num" data-fmt="signed" data-source="coverage" data-field="median_yoy" data-row="0">—</span>%</div><div class="l1-cap">median growth · <span data-draw="num" data-source="coverage" data-field="companies" data-row="0">—</span> companies · median value $<span data-draw="num" data-source="coverage" data-field="median_valuation_b" data-row="0">—</span>B</div></div>
+        <div class="l1-tile" id="kpi-unfeatured"><div class="l1-label">Never featured</div><div class="l1-big"><span data-draw="num" data-fmt="signed" data-source="coverage" data-field="median_yoy" data-row="1">—</span>%</div><div class="l1-cap">median growth · <span data-draw="num" data-source="coverage" data-field="companies" data-row="1">—</span> companies · median value $<span data-draw="num" data-source="coverage" data-field="median_valuation_b" data-row="1">—</span>B</div></div>
+      </div>
+      <p class="l1-cap">Coverage tends to arrive once a company has proven itself, so the most discussed names trail the frontier. The fastest growers are the ones few people have heard of yet.</p>
+    </div>
+
+    <div class="l1-finding" id="finding-small">
+      <h3><span class="l1-fig">+</span>Two smaller patterns</h3>
+      <div class="l1-two">
+        <div class="l1-panel" id="pattern-atoms"><h3>Hardware is back at the small end</h3><p class="l1-cap">Physical-world companies valued under $30B grew their headcount by a median <b data-draw="num" data-fmt="signed" data-source="patterns" data-field="physical_small_yoy" data-row="0">—</b>% (<span data-draw="num" data-source="patterns" data-field="physical_small_n" data-row="0">—</span> companies), hiring at the pace of AI software. Those above $30B grew <b data-draw="num" data-fmt="signed" data-source="patterns" data-field="physical_big_yoy" data-row="0">—</b>% (<span data-draw="num" data-source="patterns" data-field="physical_big_n" data-row="0">—</span> companies).</p></div>
+        <div class="l1-panel" id="pattern-open"><h3>Open source confers no edge here</h3><p class="l1-cap">Between $1B and $30B, companies built on open source or open model weights grew by a median <b data-draw="num" data-fmt="signed" data-source="patterns" data-field="open_yoy" data-row="0">—</b>% (<span data-draw="num" data-source="patterns" data-field="open_n" data-row="0">—</span> companies), against <b data-draw="num" data-fmt="signed" data-source="patterns" data-field="closed_yoy" data-row="0">—</b>% for the rest (<span data-draw="num" data-source="patterns" data-field="closed_n" data-row="0">—</span> companies). Openness now looks like table stakes rather than a differentiator.</p></div>
+      </div>
+    </div>
+
+    <div class="l1-panel" id="findings-caveats">
+      <h3>How much weight to give this</h3>
+      <p class="l1-cap">Headcount growth measures hiring, not revenue. Small companies also grow faster in percentage terms simply because they start from a smaller base. The flat line below $30B suggests that is not the whole story, but it does inflate the outliers. The categories in 5.4 and the open-source flag are editorial judgements, and those findings rest on them.</p>
+    </div>
+  </section>
+
+  <section class="l1-sec" id="explore">
+    <div class="l1-sec-h"><div class="l1-fig">06</div><h2>All companies</h2></div>
+    <div class="l1-controls">
+      <select class="dash-select" data-draw="layer-select" data-source="by_layer" aria-label="Layer"></select>
+      <select class="dash-select" id="sort-select" aria-label="Sort by">
+        <option value="valuation_b">Sort by valuation</option>
+        <option value="headcount_yoy">Sort by headcount growth</option>
+        <option value="company">Sort by name</option>
+      </select>
+    </div>
+    <div class="l1-panel l1-scroll" id="companies-table">
+      <table data-source="companies" data-row-key="company">
+        <thead><tr><th data-field="company">Company</th><th data-field="description">What it does</th><th data-field="layer">Layer</th><th class="r" data-field="valuation_b">Value ($B)</th><th class="r" data-field="headcount_yoy">Growth (%)</th><th data-field="revenue_model">Revenue model</th><th data-field="primary_buyer">Main buyer</th><th data-field="status">Status</th><th data-field="website">Website</th></tr></thead>
+        <tbody data-draw="explore"></tbody>
+      </table>
+    </div>
+    <details id="notes">
+      <summary>Sources and method</summary>
+      <ul>
+        <li>Company names, descriptions, valuations, headcount growth and listing status come from the Lenny 100 list on Lenny’s Jobs as of 13 November 2026. They have not been independently verified.</li>
+        <li>Layer, group, revenue model, main buyer, the “built around AI” flag, the category races and the open-source flag are editorial classifications based on each company’s description. Companies that earn revenue in several ways are filed under their main model.</li>
+        <li>Website links are unverified. Where no official site was identified, the link opens a web search.</li>
+        <li>Valuations combine public market capitalizations with private last-round prices, which are different kinds of figure (see section 02).</li>
+      </ul>
+    </details>
+  </section>
+  </main>
+
+  <aside class="l1-rail" aria-label="Context">
+    <div class="l1-rail-panel" data-panel="top">
+      <div class="l1-label">At a glance</div>
+      <h3>Five groups</h3>
+      <div class="l1-chart" id="rail-stack-bars" data-draw="bars" data-source="by_stack" data-label="stack" data-value="companies" data-fmt="int"></div>
+      <table data-source="by_stack" data-row-key="stack">
+        <thead><tr><th data-field="stack">Group</th><th class="r" data-field="value_b">$B</th><th class="r" data-field="median_yoy">Growth</th></tr></thead>
+        <tbody data-draw="rows" data-source="by_stack" data-key="stack" data-cols="stack:text,value_b:comma,median_yoy:signed"></tbody>
+      </table>
+      <p class="l1-cap">Companies per group, with combined value and median hiring growth.</p>
+    </div>
+    <div class="l1-rail-panel" data-panel="map" hidden>
+      <div class="l1-label">Context · 01</div>
+      <h3>Layers by size</h3>
+      <div class="l1-chart" id="rail-layer-bars" data-draw="bars" data-source="by_layer" data-label="layer" data-value="companies" data-fmt="int"></div>
+      <p class="l1-cap">Number of companies in each layer. AI applications and developer platforms are the most crowded.</p>
+    </div>
+    <div class="l1-rail-panel" data-panel="evidence" hidden>
+      <div class="l1-label">Context · 02</div>
+      <h3>How complete the data is</h3>
+      <div class="l1-meters" id="rail-meters" data-draw="meters" data-source="completeness"></div>
+      <table data-source="status_split" data-row-key="status">
+        <thead><tr><th data-field="status">Status</th><th class="r" data-field="companies">Cos.</th><th class="r" data-field="value_t">$T</th><th class="r" data-field="share_pct">Share</th></tr></thead>
+        <tbody data-draw="rows" data-source="status_split" data-key="status" data-cols="status:text,companies:int,value_t:text,share_pct:pct"></tbody>
+      </table>
+      <p class="l1-cap">Public market caps are a small group but most of the value.</p>
+    </div>
+    <div class="l1-rail-panel" data-panel="value-growth" hidden>
+      <div class="l1-label">Context · 03</div>
+      <h3>The fastest hirers</h3>
+      <table data-source="fastest" data-row-key="company">
+        <thead><tr><th data-field="company">Company</th><th class="r" data-field="valuation_b">$B</th><th class="r" data-field="headcount_yoy">Growth</th></tr></thead>
+        <tbody data-draw="rows" data-source="fastest" data-key="company" data-cols="company:link,valuation_b:text,headcount_yoy:signed"></tbody>
+      </table>
+      <p class="l1-cap">The eight companies with the highest headcount growth. None is valued above $20B.</p>
+    </div>
+    <div class="l1-rail-panel" data-panel="money" hidden>
+      <div class="l1-label">Context · 04</div>
+      <h3>Value by revenue model</h3>
+      <div class="l1-chart" id="rail-model-bars" data-draw="bars" data-source="by_model" data-label="revenue_model" data-value="value_b" data-fmt="usd"></div>
+      <p class="l1-cap">Hardware leads on value because NVIDIA and Tesla sit there; usage-metered and subscription businesses are the most numerous.</p>
+    </div>
+    <div class="l1-rail-panel" data-panel="findings" hidden>
+      <div class="l1-label">Context · 05</div>
+      <h3>The five findings in brief</h3>
+      <ol class="l1-onelines">
+        <li>The top five companies hold <b data-draw="num" data-source="concentration" data-field="top5_share_pct" data-row="0">—</b>% of all value.</li>
+        <li>Growth falls from <b data-draw="num" data-fmt="signed" data-source="size_stats" data-field="under30_yoy" data-row="0">—</b>% below $30B to <b data-draw="num" data-fmt="signed" data-source="size_stats" data-field="over30_yoy" data-row="0">—</b>% above it.</li>
+        <li>Agents and the infrastructure behind them beat the size trend.</li>
+        <li>Challengers out-hire leaders in <b data-draw="num" data-source="race_summary" data-field="challenger_ahead" data-row="0">—</b> of <b data-draw="num" data-source="race_summary" data-field="races" data-row="0">—</b> categories.</li>
+        <li>Podcast-featured companies grow <b data-draw="num" data-fmt="signed" data-source="coverage" data-field="median_yoy" data-row="0">—</b>%; the rest <b data-draw="num" data-fmt="signed" data-source="coverage" data-field="median_yoy" data-row="1">—</b>%.</li>
+      </ol>
+    </div>
+    <div class="l1-rail-panel" data-panel="explore" hidden>
+      <div class="l1-label">Context · 06</div>
+      <h3>Layers at a glance</h3>
+      <table data-source="by_layer" data-row-key="layer">
+        <thead><tr><th data-field="layer">Layer</th><th class="r" data-field="companies">Cos.</th><th class="r" data-field="median_yoy">Growth</th></tr></thead>
+        <tbody data-draw="rows" data-source="by_layer" data-key="layer" data-cols="layer:text,companies:int,median_yoy:signed"></tbody>
+      </table>
+      <p class="l1-cap">Use the layer filter to narrow the table.</p>
+    </div>
+  </aside>
+
+  </div>
+</div>
+
+
+<p class="l1-foot">Data: the <a href="https://www.lennysjobs.com/lenny100" rel="noopener">Lenny 100</a> list on Lenny’s Jobs, as of 13 November 2026. Classifications are editorial; figures and links are unverified.</p>
+</main>
+<script type="application/json" id="l1-data">{"list": [{"company": "Abridge", "description": "AI clinical documentation", "valuation_usd_b": "5.3", "headcount_yoy_pct": "41", "status": "Private", "podcast_episodes": "0"}, {"company": "AfterQuery", "description": "Expert AI training data", "valuation_usd_b": null, "headcount_yoy_pct": "117", "status": "Private", "podcast_episodes": "0"}, {"company": "Airbnb", "description": "Short-term rental marketplace", "valuation_usd_b": "106", "headcount_yoy_pct": null, "status": "Public", "podcast_episodes": "1"}, {"company": "Airwallex", "description": "Business accounts and global payments", "valuation_usd_b": "11", "headcount_yoy_pct": "29", "status": "Private", "podcast_episodes": "0"}, {"company": "Anduril", "description": "Defense systems", "valuation_usd_b": "90", "headcount_yoy_pct": "47", "status": "Private", "podcast_episodes": "0"}, {"company": "Anthropic", "description": "AI models and tools", "valuation_usd_b": "965", "headcount_yoy_pct": "114", "status": "Private", "podcast_episodes": "10"}, {"company": "Applied Compute", "description": "Custom AI model training and inference", "valuation_usd_b": "3.3", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "Applied Intuition", "description": "Autonomous vehicle software", "valuation_usd_b": "15", "headcount_yoy_pct": "21", "status": "Private", "podcast_episodes": "1"}, {"company": "Arena", "description": "AI model evaluation and rankings (formerly LMArena)", "valuation_usd_b": "3.1", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "Base", "description": "Electricity and home battery backup", "valuation_usd_b": "13", "headcount_yoy_pct": "111", "status": "Private", "podcast_episodes": "0"}, {"company": "Baseten", "description": "AI inference infrastructure", "valuation_usd_b": "13", "headcount_yoy_pct": "258", "status": "Private", "podcast_episodes": "0"}, {"company": "Basis", "description": "AI accounting agents", "valuation_usd_b": "1.1", "headcount_yoy_pct": "175", "status": "Private", "podcast_episodes": "0"}, {"company": "Bedrock Robotics", "description": "Autonomous construction equipment", "valuation_usd_b": "4.1", "headcount_yoy_pct": "104", "status": "Private", "podcast_episodes": "0"}, {"company": "Black Forest Labs", "description": "AI image and video models", "valuation_usd_b": "3.3", "headcount_yoy_pct": "100", "status": "Private", "podcast_episodes": "0"}, {"company": "Chai Discovery", "description": "AI drug discovery", "valuation_usd_b": "3.8", "headcount_yoy_pct": "68", "status": "Private", "podcast_episodes": "0"}, {"company": "Chainguard", "description": "Secure open-source software", "valuation_usd_b": "3.5", "headcount_yoy_pct": "29", "status": "Private", "podcast_episodes": "0"}, {"company": "Clay", "description": "Sales data enrichment and outreach automation", "valuation_usd_b": "7.1", "headcount_yoy_pct": "49", "status": "Private", "podcast_episodes": "0"}, {"company": "ClickHouse", "description": "Open-source analytics database", "valuation_usd_b": "15", "headcount_yoy_pct": "55", "status": "Private", "podcast_episodes": "0"}, {"company": "Cloudflare", "description": "Web infrastructure and cybersecurity", "valuation_usd_b": "94.9", "headcount_yoy_pct": "4", "status": "Public", "podcast_episodes": "0"}, {"company": "Cognition", "description": "AI coding tools including Devin", "valuation_usd_b": "48", "headcount_yoy_pct": "141", "status": "Private", "podcast_episodes": "1"}, {"company": "CoreWeave", "description": "GPU cloud", "valuation_usd_b": "26.7", "headcount_yoy_pct": "52", "status": "Public", "podcast_episodes": "0"}, {"company": "Crusoe", "description": "AI cloud and data centers", "valuation_usd_b": "30.9", "headcount_yoy_pct": "83", "status": "Private", "podcast_episodes": "0"}, {"company": "Cyera", "description": "Data security", "valuation_usd_b": "12", "headcount_yoy_pct": "60", "status": "Private", "podcast_episodes": "0"}, {"company": "Databricks", "description": "Data analytics and AI infrastructure", "valuation_usd_b": "190", "headcount_yoy_pct": "19", "status": "Private", "podcast_episodes": "0"}, {"company": "Decagon", "description": "AI agents for customer support", "valuation_usd_b": "4.5", "headcount_yoy_pct": "164", "status": "Private", "podcast_episodes": "0"}, {"company": "Deel", "description": "Global payroll and HR", "valuation_usd_b": "17", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "1"}, {"company": "ElevenLabs", "description": "AI voice generation", "valuation_usd_b": "22", "headcount_yoy_pct": "126", "status": "Private", "podcast_episodes": "0"}, {"company": "Etched", "description": "AI inference hardware", "valuation_usd_b": "21", "headcount_yoy_pct": "56", "status": "Private", "podcast_episodes": "0"}, {"company": "Exa", "description": "Web search API for AI agents", "valuation_usd_b": "2.2", "headcount_yoy_pct": "288", "status": "Private", "podcast_episodes": "0"}, {"company": "Factory", "description": "AI coding agents", "valuation_usd_b": "5", "headcount_yoy_pct": "114", "status": "Private", "podcast_episodes": "0"}, {"company": "Fal", "description": "AI infrastructure for generative media", "valuation_usd_b": "16", "headcount_yoy_pct": "73", "status": "Private", "podcast_episodes": "0"}, {"company": "Figma", "description": "Collaborative design software", "valuation_usd_b": "11.8", "headcount_yoy_pct": null, "status": "Public", "podcast_episodes": "5"}, {"company": "Figure", "description": "Humanoid robots", "valuation_usd_b": "39", "headcount_yoy_pct": "39", "status": "Private", "podcast_episodes": "0"}, {"company": "Fireworks", "description": "AI model training and inference", "valuation_usd_b": "17.5", "headcount_yoy_pct": "219", "status": "Private", "podcast_episodes": "0"}, {"company": "Gimlet Labs", "description": "AI inference cloud", "valuation_usd_b": "3", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "Glean", "description": "Enterprise AI search, assistants, and agents", "valuation_usd_b": "7.2", "headcount_yoy_pct": "27", "status": "Private", "podcast_episodes": "1"}, {"company": "Granola", "description": "AI meeting notes", "valuation_usd_b": "1.3", "headcount_yoy_pct": "135", "status": "Private", "podcast_episodes": "0"}, {"company": "Hadrian", "description": "Automated aerospace and defense manufacturing", "valuation_usd_b": "8", "headcount_yoy_pct": "116", "status": "Private", "podcast_episodes": "0"}, {"company": "Handshake", "description": "Career marketplace and AI data services", "valuation_usd_b": "3.5", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "1"}, {"company": "Harvey", "description": "Legal AI", "valuation_usd_b": "15.6", "headcount_yoy_pct": "172", "status": "Private", "podcast_episodes": "0"}, {"company": "Helsing", "description": "Defense AI and autonomous systems", "valuation_usd_b": "18", "headcount_yoy_pct": "44", "status": "Private", "podcast_episodes": "0"}, {"company": "Hex", "description": "AI analytics", "valuation_usd_b": "1.2", "headcount_yoy_pct": "41", "status": "Private", "podcast_episodes": "0"}, {"company": "Kalshi", "description": "Prediction markets", "valuation_usd_b": "40", "headcount_yoy_pct": "84", "status": "Private", "podcast_episodes": "0"}, {"company": "Lambda", "description": "GPU cloud computing", "valuation_usd_b": "2.5", "headcount_yoy_pct": "16", "status": "Private", "podcast_episodes": "0"}, {"company": "Legora", "description": "AI tools for lawyers", "valuation_usd_b": "8.8", "headcount_yoy_pct": "333", "status": "Private", "podcast_episodes": "0"}, {"company": "Linear", "description": "Project management for software development", "valuation_usd_b": "2.5", "headcount_yoy_pct": "60", "status": "Private", "podcast_episodes": "3"}, {"company": "Liquid AI", "description": "On-device AI models", "valuation_usd_b": "2.3", "headcount_yoy_pct": "63", "status": "Private", "podcast_episodes": "0"}, {"company": "Lovable", "description": "AI app builder", "valuation_usd_b": "13.3", "headcount_yoy_pct": "65", "status": "Private", "podcast_episodes": "4"}, {"company": "Mercor", "description": "Expert data for AI training", "valuation_usd_b": "10", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "1"}, {"company": "Mercury", "description": "Business banking", "valuation_usd_b": "5.2", "headcount_yoy_pct": "15", "status": "Private", "podcast_episodes": "0"}, {"company": "Mistral AI", "description": "AI models and tools", "valuation_usd_b": "24.4", "headcount_yoy_pct": "118", "status": "Private", "podcast_episodes": "0"}, {"company": "Modal", "description": "AI cloud infrastructure", "valuation_usd_b": "15.8", "headcount_yoy_pct": "107", "status": "Private", "podcast_episodes": "0"}, {"company": "n8n", "description": "Workflow automation", "valuation_usd_b": "5.2", "headcount_yoy_pct": "75", "status": "Private", "podcast_episodes": "0"}, {"company": "Notion", "description": "Workspace for notes, tasks, and wikis", "valuation_usd_b": "11", "headcount_yoy_pct": "12", "status": "Private", "podcast_episodes": "2"}, {"company": "NVIDIA", "description": "GPUs and AI computing infrastructure", "valuation_usd_b": "4830.0", "headcount_yoy_pct": "13", "status": "Public", "podcast_episodes": "1"}, {"company": "OpenAI", "description": "AI models and tools", "valuation_usd_b": "1250.0", "headcount_yoy_pct": "77", "status": "Private", "podcast_episodes": "11"}, {"company": "OpenEvidence", "description": "AI medical search for doctors", "valuation_usd_b": "15", "headcount_yoy_pct": "40", "status": "Private", "podcast_episodes": "0"}, {"company": "Palantir", "description": "Data integration, analytics, and AI", "valuation_usd_b": "414", "headcount_yoy_pct": "2", "status": "Public", "podcast_episodes": "1"}, {"company": "Parallel", "description": "Web search and research APIs for AI agents", "valuation_usd_b": "2", "headcount_yoy_pct": "188", "status": "Private", "podcast_episodes": "0"}, {"company": "Periodic Labs", "description": "AI and autonomous labs for materials science", "valuation_usd_b": "1", "headcount_yoy_pct": "136", "status": "Private", "podcast_episodes": "0"}, {"company": "Physical Intelligence", "description": "AI models for robots", "valuation_usd_b": "5.6", "headcount_yoy_pct": "47", "status": "Private", "podcast_episodes": "0"}, {"company": "Polymarket", "description": "Prediction market", "valuation_usd_b": "9", "headcount_yoy_pct": "257", "status": "Private", "podcast_episodes": "0"}, {"company": "PostHog", "description": "Agentic analytics, experimentation, observability, and user research", "valuation_usd_b": "1.4", "headcount_yoy_pct": "53", "status": "Private", "podcast_episodes": "0"}, {"company": "Prime Intellect", "description": "AI training and compute infrastructure", "valuation_usd_b": "1", "headcount_yoy_pct": "39", "status": "Private", "podcast_episodes": "0"}, {"company": "Profound", "description": "Brand visibility in AI search", "valuation_usd_b": "1.8", "headcount_yoy_pct": "187", "status": "Private", "podcast_episodes": "0"}, {"company": "Railway", "description": "Cloud app hosting", "valuation_usd_b": null, "headcount_yoy_pct": "10", "status": "Private", "podcast_episodes": "0"}, {"company": "Ramp", "description": "Corporate cards and expense management", "valuation_usd_b": "60", "headcount_yoy_pct": "32", "status": "Private", "podcast_episodes": "3"}, {"company": "Reflection AI", "description": "Open AI models", "valuation_usd_b": "8", "headcount_yoy_pct": "172", "status": "Private", "podcast_episodes": "0"}, {"company": "Replit", "description": "AI app builder", "valuation_usd_b": "9", "headcount_yoy_pct": "130", "status": "Private", "podcast_episodes": "1"}, {"company": "Revolut", "description": "Digital banking", "valuation_usd_b": "115", "headcount_yoy_pct": "15", "status": "Private", "podcast_episodes": "1"}, {"company": "Ricursive", "description": "AI chip design automation", "valuation_usd_b": "4", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "Rippling", "description": "HR, payroll, IT, and spend management", "valuation_usd_b": "16.8", "headcount_yoy_pct": "19", "status": "Private", "podcast_episodes": "1"}, {"company": "Runway", "description": "AI video generation", "valuation_usd_b": "5.3", "headcount_yoy_pct": "59", "status": "Private", "podcast_episodes": "0"}, {"company": "Safe Superintelligence", "description": "Safe superintelligence research", "valuation_usd_b": "32", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "Saronic", "description": "Autonomous ships", "valuation_usd_b": "9.3", "headcount_yoy_pct": "81", "status": "Private", "podcast_episodes": "0"}, {"company": "Shield AI", "description": "Autonomous aircraft and AI pilot software", "valuation_usd_b": "28.8", "headcount_yoy_pct": "56", "status": "Private", "podcast_episodes": "0"}, {"company": "Shopify", "description": "E-commerce software and merchant services", "valuation_usd_b": "197", "headcount_yoy_pct": "-3", "status": "Public", "podcast_episodes": "3"}, {"company": "Sierra", "description": "AI agents for customer service", "valuation_usd_b": "15.8", "headcount_yoy_pct": "93", "status": "Private", "podcast_episodes": "1"}, {"company": "Skild", "description": "General-purpose AI for robots", "valuation_usd_b": "14", "headcount_yoy_pct": "66", "status": "Private", "podcast_episodes": "0"}, {"company": "SpaceX", "description": "Rockets, spacecraft, satellite internet, AI models, and social media", "valuation_usd_b": "1850.0", "headcount_yoy_pct": "15", "status": "Public", "podcast_episodes": "0"}, {"company": "Stripe", "description": "Payments infrastructure", "valuation_usd_b": "159", "headcount_yoy_pct": "15", "status": "Private", "podcast_episodes": "4"}, {"company": "Sunday Robotics", "description": "Home robots", "valuation_usd_b": "1.1", "headcount_yoy_pct": "111", "status": "Private", "podcast_episodes": "0"}, {"company": "Suno", "description": "AI music generation", "valuation_usd_b": "5.4", "headcount_yoy_pct": "39", "status": "Private", "podcast_episodes": "0"}, {"company": "Supabase", "description": "Open-source backend infrastructure", "valuation_usd_b": "10", "headcount_yoy_pct": "92", "status": "Private", "podcast_episodes": "0"}, {"company": "Surge AI", "description": "Data labeling for AI training", "valuation_usd_b": null, "headcount_yoy_pct": "75", "status": "Private", "podcast_episodes": "1"}, {"company": "Temporal", "description": "Open-source durable execution", "valuation_usd_b": "12.6", "headcount_yoy_pct": "72", "status": "Private", "podcast_episodes": "0"}, {"company": "Tesla", "description": "Electric vehicles and energy storage", "valuation_usd_b": "1520.0", "headcount_yoy_pct": null, "status": "Public", "podcast_episodes": "0"}, {"company": "Thinking Machines", "description": "AI models and tools", "valuation_usd_b": "10", "headcount_yoy_pct": "112", "status": "Private", "podcast_episodes": "0"}, {"company": "Together", "description": "Cloud infrastructure for AI models", "valuation_usd_b": "8.3", "headcount_yoy_pct": "42", "status": "Private", "podcast_episodes": "0"}, {"company": "turbopuffer", "description": "Vector and full-text search on object storage", "valuation_usd_b": null, "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "TypeSafe AI", "description": "AI lab", "valuation_usd_b": "7.5", "headcount_yoy_pct": null, "status": "Private", "podcast_episodes": "0"}, {"company": "Valon", "description": "Residential mortgage lending and servicing", "valuation_usd_b": "2.3", "headcount_yoy_pct": "25", "status": "Private", "podcast_episodes": "0"}, {"company": "Vanta", "description": "Compliance automation", "valuation_usd_b": "4.1", "headcount_yoy_pct": "31", "status": "Private", "podcast_episodes": "0"}, {"company": "Vercel", "description": "Web app development and hosting", "valuation_usd_b": "9.3", "headcount_yoy_pct": "18", "status": "Private", "podcast_episodes": "1"}, {"company": "Waymo", "description": "Autonomous ride-hailing", "valuation_usd_b": "126", "headcount_yoy_pct": "31", "status": "Private", "podcast_episodes": "1"}, {"company": "Whatnot", "description": "Live shopping marketplace", "valuation_usd_b": "20", "headcount_yoy_pct": "28", "status": "Private", "podcast_episodes": "1"}, {"company": "Wispr Flow", "description": "AI dictation", "valuation_usd_b": "2", "headcount_yoy_pct": "82", "status": "Private", "podcast_episodes": "1"}, {"company": "Wonderful", "description": "Enterprise AI agents", "valuation_usd_b": "5", "headcount_yoy_pct": "372", "status": "Private", "podcast_episodes": "0"}, {"company": "WorkOS", "description": "Authentication and enterprise features for apps", "valuation_usd_b": "2", "headcount_yoy_pct": "41", "status": "Private", "podcast_episodes": "0"}], "tags": [{"company": "Abridge", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Clinical AI", "open_source": "No"}, {"company": "AfterQuery", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": "Expert data for AI", "open_source": "No"}, {"company": "Airbnb", "layer": "Consumer & commerce", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Airwallex", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Enterprises", "ai_native": "No", "race": "Spend and business banking", "open_source": "No"}, {"company": "Anduril", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Government contracts", "primary_buyer": "Government & defense", "ai_native": "Yes", "race": "Autonomous defense", "open_source": "No"}, {"company": "Anthropic", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Usage-metered", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Frontier models", "open_source": "No"}, {"company": "Applied Compute", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Applied Intuition", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Arena", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Base", "layer": "Consumer & commerce", "stack": "Money & commerce", "revenue_model": "Hardware & physical goods", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Baseten", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Inference platforms", "open_source": "No"}, {"company": "Basis", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Bedrock Robotics", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Hardware & physical goods", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Black Forest Labs", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Image and video models", "open_source": "Yes"}, {"company": "Chai Discovery", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Chainguard", "layer": "Security & compliance", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "Yes"}, {"company": "Clay", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "ClickHouse", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "Yes"}, {"company": "Cloudflare", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Cognition", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Coding agents", "open_source": "No"}, {"company": "CoreWeave", "layer": "Compute & chips", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "AI labs & hyperscalers", "ai_native": "No", "race": "GPU clouds", "open_source": "No"}, {"company": "Crusoe", "layer": "Compute & chips", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "AI labs & hyperscalers", "ai_native": "No", "race": "GPU clouds", "open_source": "No"}, {"company": "Cyera", "layer": "Security & compliance", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Databricks", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Decagon", "layer": "AI applications", "stack": "Software", "revenue_model": "Outcome-based", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Customer-support agents", "open_source": "No"}, {"company": "Deel", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Subscription / seats", "primary_buyer": "SMBs & startups", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "ElevenLabs", "layer": "AI applications", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Etched", "layer": "Compute & chips", "stack": "AI infrastructure", "revenue_model": "Hardware & physical goods", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Exa", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Search APIs for agents", "open_source": "No"}, {"company": "Factory", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Coding agents", "open_source": "No"}, {"company": "Fal", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Inference platforms", "open_source": "No"}, {"company": "Figma", "layer": "Work software", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Figure", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Hardware & physical goods", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Fireworks", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Inference platforms", "open_source": "No"}, {"company": "Gimlet Labs", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Inference platforms", "open_source": "No"}, {"company": "Glean", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Granola", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Hadrian", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Hardware & physical goods", "primary_buyer": "Government & defense", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Handshake", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "AI labs & hyperscalers", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Harvey", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Legal AI", "open_source": "No"}, {"company": "Helsing", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Government contracts", "primary_buyer": "Government & defense", "ai_native": "Yes", "race": "Autonomous defense", "open_source": "No"}, {"company": "Hex", "layer": "Work software", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Kalshi", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": "Prediction markets", "open_source": "No"}, {"company": "Lambda", "layer": "Compute & chips", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": "GPU clouds", "open_source": "No"}, {"company": "Legora", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Legal AI", "open_source": "No"}, {"company": "Linear", "layer": "Work software", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Liquid AI", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Subscription / seats", "primary_buyer": "Developers", "ai_native": "Yes", "race": null, "open_source": "Yes"}, {"company": "Lovable", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": "AI app builders", "open_source": "No"}, {"company": "Mercor", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": "Expert data for AI", "open_source": "No"}, {"company": "Mercury", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "SMBs & startups", "ai_native": "No", "race": "Spend and business banking", "open_source": "No"}, {"company": "Mistral AI", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Frontier models", "open_source": "Yes"}, {"company": "Modal", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Inference platforms", "open_source": "No"}, {"company": "n8n", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "Yes"}, {"company": "Notion", "layer": "Work software", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "NVIDIA", "layer": "Compute & chips", "stack": "AI infrastructure", "revenue_model": "Hardware & physical goods", "primary_buyer": "AI labs & hyperscalers", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "OpenAI", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": "Frontier models", "open_source": "No"}, {"company": "OpenEvidence", "layer": "AI applications", "stack": "Software", "revenue_model": "Advertising", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Clinical AI", "open_source": "No"}, {"company": "Palantir", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Government contracts", "primary_buyer": "Government & defense", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Parallel", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Search APIs for agents", "open_source": "No"}, {"company": "Periodic Labs", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Physical Intelligence", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Robot foundation models", "open_source": "No"}, {"company": "Polymarket", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": "Prediction markets", "open_source": "No"}, {"company": "PostHog", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "Yes"}, {"company": "Prime Intellect", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": null, "open_source": "Yes"}, {"company": "Profound", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Railway", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Ramp", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "SMBs & startups", "ai_native": "No", "race": "Spend and business banking", "open_source": "No"}, {"company": "Reflection AI", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Research stage", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Frontier models", "open_source": "Yes"}, {"company": "Replit", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": "AI app builders", "open_source": "No"}, {"company": "Revolut", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Ricursive", "layer": "Compute & chips", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Rippling", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Subscription / seats", "primary_buyer": "SMBs & startups", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Runway", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": "Image and video models", "open_source": "No"}, {"company": "Safe Superintelligence", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Saronic", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Government contracts", "primary_buyer": "Government & defense", "ai_native": "Yes", "race": "Autonomous defense", "open_source": "No"}, {"company": "Shield AI", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Government contracts", "primary_buyer": "Government & defense", "ai_native": "Yes", "race": "Autonomous defense", "open_source": "No"}, {"company": "Shopify", "layer": "Consumer & commerce", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "SMBs & startups", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Sierra", "layer": "AI applications", "stack": "Software", "revenue_model": "Outcome-based", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Customer-support agents", "open_source": "No"}, {"company": "Skild", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Robot foundation models", "open_source": "No"}, {"company": "SpaceX", "layer": "Defense, space & government", "stack": "Physical world", "revenue_model": "Government contracts", "primary_buyer": "Government & defense", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Stripe", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Sunday Robotics", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Hardware & physical goods", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Suno", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Supabase", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "Yes"}, {"company": "Surge AI", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Data & services contracts", "primary_buyer": "AI labs & hyperscalers", "ai_native": "Yes", "race": "Expert data for AI", "open_source": "No"}, {"company": "Temporal", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "Yes"}, {"company": "Tesla", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Hardware & physical goods", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Thinking Machines", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Frontier models", "open_source": "No"}, {"company": "Together", "layer": "AI cloud & inference", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": "Inference platforms", "open_source": "No"}, {"company": "turbopuffer", "layer": "Data for AI", "stack": "AI infrastructure", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "TypeSafe AI", "layer": "Model & science labs", "stack": "Model labs", "revenue_model": "Research stage", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Valon", "layer": "Fintech & markets", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Vanta", "layer": "Security & compliance", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Enterprises", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Vercel", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Waymo", "layer": "Robotics & autonomy", "stack": "Physical world", "revenue_model": "Usage-metered", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Whatnot", "layer": "Consumer & commerce", "stack": "Money & commerce", "revenue_model": "Transaction take rate", "primary_buyer": "Consumers & creators", "ai_native": "No", "race": null, "open_source": "No"}, {"company": "Wispr Flow", "layer": "AI applications", "stack": "Software", "revenue_model": "Subscription / seats", "primary_buyer": "Consumers & creators", "ai_native": "Yes", "race": null, "open_source": "No"}, {"company": "Wonderful", "layer": "AI applications", "stack": "Software", "revenue_model": "Outcome-based", "primary_buyer": "Enterprises", "ai_native": "Yes", "race": "Customer-support agents", "open_source": "No"}, {"company": "WorkOS", "layer": "Developer platforms", "stack": "Software", "revenue_model": "Usage-metered", "primary_buyer": "Developers", "ai_native": "No", "race": null, "open_source": "No"}], "websites": [{"company": "Abridge", "website": "https://abridge.com"}, {"company": "AfterQuery", "website": "https://afterquery.com"}, {"company": "Airbnb", "website": "https://airbnb.com"}, {"company": "Airwallex", "website": "https://airwallex.com"}, {"company": "Anduril", "website": "https://anduril.com"}, {"company": "Anthropic", "website": "https://anthropic.com"}, {"company": "Applied Compute", "website": null}, {"company": "Applied Intuition", "website": "https://appliedintuition.com"}, {"company": "Arena", "website": "https://lmarena.ai"}, {"company": "Base", "website": "https://basepowercompany.com"}, {"company": "Baseten", "website": "https://baseten.co"}, {"company": "Basis", "website": null}, {"company": "Bedrock Robotics", "website": "https://bedrockrobotics.com"}, {"company": "Black Forest Labs", "website": "https://bfl.ai"}, {"company": "Chai Discovery", "website": "https://chaidiscovery.com"}, {"company": "Chainguard", "website": "https://chainguard.dev"}, {"company": "Clay", "website": "https://clay.com"}, {"company": "ClickHouse", "website": "https://clickhouse.com"}, {"company": "Cloudflare", "website": "https://cloudflare.com"}, {"company": "Cognition", "website": "https://cognition.ai"}, {"company": "CoreWeave", "website": "https://coreweave.com"}, {"company": "Crusoe", "website": "https://crusoe.ai"}, {"company": "Cyera", "website": null}, {"company": "Databricks", "website": "https://databricks.com"}, {"company": "Decagon", "website": "https://decagon.ai"}, {"company": "Deel", "website": "https://deel.com"}, {"company": "ElevenLabs", "website": "https://elevenlabs.io"}, {"company": "Etched", "website": "https://etched.com"}, {"company": "Exa", "website": "https://exa.ai"}, {"company": "Factory", "website": "https://factory.ai"}, {"company": "Fal", "website": "https://fal.ai"}, {"company": "Figma", "website": "https://figma.com"}, {"company": "Figure", "website": "https://figure.ai"}, {"company": "Fireworks", "website": "https://fireworks.ai"}, {"company": "Gimlet Labs", "website": null}, {"company": "Glean", "website": "https://glean.com"}, {"company": "Granola", "website": "https://granola.ai"}, {"company": "Hadrian", "website": "https://hadrian.co"}, {"company": "Handshake", "website": "https://joinhandshake.com"}, {"company": "Harvey", "website": "https://harvey.ai"}, {"company": "Helsing", "website": "https://helsing.ai"}, {"company": "Hex", "website": "https://hex.tech"}, {"company": "Kalshi", "website": "https://kalshi.com"}, {"company": "Lambda", "website": "https://lambda.ai"}, {"company": "Legora", "website": "https://legora.com"}, {"company": "Linear", "website": "https://linear.app"}, {"company": "Liquid AI", "website": "https://liquid.ai"}, {"company": "Lovable", "website": "https://lovable.dev"}, {"company": "Mercor", "website": "https://mercor.com"}, {"company": "Mercury", "website": "https://mercury.com"}, {"company": "Mistral AI", "website": "https://mistral.ai"}, {"company": "Modal", "website": "https://modal.com"}, {"company": "n8n", "website": "https://n8n.io"}, {"company": "Notion", "website": "https://notion.com"}, {"company": "NVIDIA", "website": "https://nvidia.com"}, {"company": "OpenAI", "website": "https://openai.com"}, {"company": "OpenEvidence", "website": "https://openevidence.com"}, {"company": "Palantir", "website": "https://palantir.com"}, {"company": "Parallel", "website": "https://parallel.ai"}, {"company": "Periodic Labs", "website": null}, {"company": "Physical Intelligence", "website": "https://physicalintelligence.company"}, {"company": "Polymarket", "website": "https://polymarket.com"}, {"company": "PostHog", "website": "https://posthog.com"}, {"company": "Prime Intellect", "website": "https://primeintellect.ai"}, {"company": "Profound", "website": "https://tryprofound.com"}, {"company": "Railway", "website": "https://railway.com"}, {"company": "Ramp", "website": "https://ramp.com"}, {"company": "Reflection AI", "website": "https://reflection.ai"}, {"company": "Replit", "website": "https://replit.com"}, {"company": "Revolut", "website": "https://revolut.com"}, {"company": "Ricursive", "website": null}, {"company": "Rippling", "website": "https://rippling.com"}, {"company": "Runway", "website": "https://runwayml.com"}, {"company": "Safe Superintelligence", "website": "https://ssi.inc"}, {"company": "Saronic", "website": "https://saronic.com"}, {"company": "Shield AI", "website": "https://shield.ai"}, {"company": "Shopify", "website": "https://shopify.com"}, {"company": "Sierra", "website": "https://sierra.ai"}, {"company": "Skild", "website": "https://skild.ai"}, {"company": "SpaceX", "website": "https://spacex.com"}, {"company": "Stripe", "website": "https://stripe.com"}, {"company": "Sunday Robotics", "website": null}, {"company": "Suno", "website": "https://suno.com"}, {"company": "Supabase", "website": "https://supabase.com"}, {"company": "Surge AI", "website": "https://surgehq.ai"}, {"company": "Temporal", "website": "https://temporal.io"}, {"company": "Tesla", "website": "https://tesla.com"}, {"company": "Thinking Machines", "website": "https://thinkingmachines.ai"}, {"company": "Together", "website": "https://together.ai"}, {"company": "turbopuffer", "website": "https://turbopuffer.com"}, {"company": "TypeSafe AI", "website": null}, {"company": "Valon", "website": "https://valon.com"}, {"company": "Vanta", "website": "https://vanta.com"}, {"company": "Vercel", "website": "https://vercel.com"}, {"company": "Waymo", "website": "https://waymo.com"}, {"company": "Whatnot", "website": "https://whatnot.com"}, {"company": "Wispr Flow", "website": "https://wisprflow.ai"}, {"company": "Wonderful", "website": null}, {"company": "WorkOS", "website": "https://workos.com"}]}</script>
+<script>
+(function () {
+  const RAW = JSON.parse(document.getElementById('l1-data').textContent);
+  const calcs = {}, cache = {}, draws = {}, listeners = [];
+  const resolve = (id) => {
+    if (id in cache) return cache[id];
+    if (RAW[id]) return (cache[id] = RAW[id]);
+    const c = calcs[id]; if (!c) return null;
+    return (cache[id] = c.fn(...c.inputs.map(resolve)));
+  };
+  window.dash = {
+    colors: ['var(--accent)', 'var(--g3)', 'var(--g1)', 'var(--g4)', 'var(--g5)'],
+    data(id) { const d = resolve(id); return { status: d === null || d === undefined ? 'missing' : 'ok', data: d, columns: Array.isArray(d) && d[0] ? Object.keys(d[0]) : [] }; },
+    calc(id, spec) { calcs[id] = spec; },
+    loader() {},
+    onData(fn) { listeners.push(fn); },
+    draw(name, fn) {
+      if (fn) { draws[name] = fn; return; }
+      run(name);
+    },
+    params() { return {}; }, setParams() {}, resetParams() {}, setLink() {}, refresh() {}
+  };
+  const run = (name) => document.querySelectorAll('[data-draw="' + name + '"]').forEach((el) => { try { draws[name](el); } catch (e) { console.error(name, e); } });
+  window.L1runAll = () => { listeners.forEach((f) => f()); Object.keys(draws).forEach(run); };
+  let w = window.innerWidth, t;
+  window.addEventListener('resize', () => { if (window.innerWidth === w) return; w = window.innerWidth; clearTimeout(t); t = setTimeout(window.L1runAll, 150); });
+})();
+</script>
+<script>
+const STACKS = ['AI infrastructure', 'Model labs', 'Software', 'Physical world', 'Money & commerce'];
+window.L1 = window.L1 || { layer: '', sort: 'valuation_b' };
+window.L1stackColor = () => dash.colors[1 % dash.colors.length];
+window.L1accent = () => dash.colors[0];
+window.L1stacks = STACKS;
+
+dash.calc('companies', {
+  inputs: ['list', 'tags', 'websites'],
+  title: 'Companies with classifications',
+  description: 'Each company from the list, joined to its editorial classification and website, with figures converted to numbers.',
+  fn: (list, tags, websites) => {
+    const byName = new Map(tags.map((t) => [t.company, t]));
+    const site = new Map((websites || []).map((w) => [w.company, w.website]));
+    const num = (v) => (v === null || v === undefined || v === '' ? null : Number(v));
+    return list.map((r) => {
+      const t = byName.get(r.company) || {};
+      const v = num(r.valuation_usd_b);
+      const y = num(r.headcount_yoy_pct);
+      return {
+        company: r.company, description: r.description, status: r.status,
+        valuation_b: v, headcount_yoy: y, podcast_episodes: num(r.podcast_episodes) || 0,
+        layer: t.layer || 'Unclassified', stack: t.stack || 'Unclassified',
+        website: /^https:\/\//.test(site.get(r.company) || '') ? site.get(r.company) : '',
+        revenue_model: t.revenue_model || '', primary_buyer: t.primary_buyer || '', ai_native: t.ai_native || '',
+        val_label: v === null ? 'n/a' : (v >= 1000 ? '$' + +(v / 1000).toFixed(2) + 'T' : '$' + v + 'B'),
+        yoy_label: y === null ? 'n/a' : (y > 0 ? '+' : '') + y + '%'
+      };
+    });
+  }
+});
+
+dash.calc('summary', {
+  inputs: ['companies'],
+  title: 'Headline figures',
+  description: 'Counts, totals and medians across all companies.',
+  fn: (companies) => {
+    const c = companies || [];
+    const sum = (a) => a.reduce((s, r) => s + (r.valuation_b || 0), 0);
+    const med = (a) => { const v = a.map((r) => r.headcount_yoy).filter((x) => x !== null).sort((x, y) => x - y); if (!v.length) return null; const m = v.length / 2; return Math.round(v.length % 2 ? v[Math.floor(m)] : (v[m - 1] + v[m]) / 2); };
+    const total = sum(c);
+    const pub = c.filter((r) => r.status === 'Public');
+    const priv = c.filter((r) => r.status !== 'Public');
+    const labs = priv.filter((r) => r.layer === 'Model & science labs');
+    const nat = c.filter((r) => r.ai_native === 'Yes');
+    const non = c.filter((r) => r.ai_native === 'No');
+    return [{
+      companies: c.length,
+      total_t: Math.round(total / 100) / 10,
+      private_t: Math.round(sum(priv) / 100) / 10,
+      private_n: priv.length,
+      public_n: pub.length,
+      public_share_pct: total ? Math.round(sum(pub) / total * 100) : null,
+      labs_share_private_pct: sum(priv) ? Math.round(sum(labs) / sum(priv) * 100) : null,
+      median_yoy: med(c),
+      native_yoy: med(nat), native_n: nat.length,
+      nonnative_yoy: med(non), nonnative_n: non.length,
+      val_disclosed_n: c.filter((r) => r.valuation_b !== null).length,
+      yoy_disclosed_n: c.filter((r) => r.headcount_yoy !== null).length,
+      podcast_n: c.filter((r) => r.podcast_episodes > 0).length,
+      scatter_excluded: c.filter((r) => r.valuation_b === null || r.headcount_yoy === null).length
+    }];
+  }
+});
+
+window.L1group = (rows, key) => {
+  const g = d3.group(rows, (r) => r[key]);
+  return Array.from(g, ([k, a]) => {
+    const ys = a.map((r) => r.headcount_yoy).filter((x) => x !== null);
+    const sorted = a.filter((r) => r.valuation_b !== null).sort((x, y) => y.valuation_b - x.valuation_b);
+    return {
+      [key]: k, stack: a[0].stack, companies: a.length,
+      value_b: Math.round(d3.sum(a, (r) => r.valuation_b || 0)),
+      median_yoy: ys.length ? Math.round(d3.median(ys)) : null,
+      examples: sorted.slice(0, 3).map((r) => r.company).join(', ')
+    };
+  });
+};
+
+dash.calc('by_layer', {
+  inputs: ['companies'],
+  title: 'By layer',
+  description: 'Companies, combined valuation and median headcount growth for each layer.',
+  fn: (companies) => window.L1group(companies || [], 'layer')
+    .sort((a, b) => (window.L1stacks.indexOf(a.stack) - window.L1stacks.indexOf(b.stack)) || (b.value_b - a.value_b))
+});
+dash.calc('by_model', {
+  inputs: ['companies'],
+  title: 'By revenue model',
+  description: 'Companies, combined valuation and median headcount growth for each revenue model.',
+  fn: (companies) => window.L1group(companies || [], 'revenue_model').sort((a, b) => b.companies - a.companies)
+});
+dash.calc('by_buyer', {
+  inputs: ['companies'],
+  title: 'By primary buyer',
+  description: 'Companies, combined valuation and median headcount growth for each primary buyer.',
+  fn: (companies) => window.L1group(companies || [], 'primary_buyer').sort((a, b) => b.companies - a.companies)
+});
+
+const L1med = (a) => { const v = a.filter((x) => x !== null && x !== undefined).sort((x, y) => x - y); if (!v.length) return null; const m = v.length / 2; return v.length % 2 ? v[Math.floor(m)] : (v[m - 1] + v[m]) / 2; };
+window.L1med = L1med;
+
+dash.calc('concentration', {
+  inputs: ['companies'],
+  title: 'Value concentration',
+  description: 'Share of disclosed valuation held by the largest and smallest companies, and the median valuation.',
+  fn: (companies) => {
+    const v = (companies || []).map((r) => r.valuation_b).filter((x) => x !== null).sort((a, b) => b - a);
+    const total = v.reduce((s, x) => s + x, 0);
+    const share = (a) => (total ? a.reduce((s, x) => s + x, 0) / total * 100 : null);
+    const half = v.slice(Math.ceil(v.length / 2));
+    return [{
+      top5_share_pct: Math.round(share(v.slice(0, 5))),
+      top10_share_pct: Math.round(share(v.slice(0, 10))),
+      bottom_half_n: half.length,
+      bottom_half_share_pct: Math.round(share(half) * 10) / 10,
+      median_valuation_b: Math.round(window.L1med(v) * 10) / 10
+    }];
+  }
+});
+
+dash.calc('by_size', {
+  inputs: ['companies'],
+  title: 'Growth by valuation band',
+  description: 'Median headcount growth in five valuation bands, for companies with both figures.',
+  fn: (companies) => {
+    const bands = [['Under $3B', 0, 3], ['$3–10B', 3, 10], ['$10–30B', 10, 30], ['$30–200B', 30, 200], ['Over $200B', 200, Infinity]];
+    const both = (companies || []).filter((r) => r.valuation_b !== null && r.headcount_yoy !== null);
+    return bands.map(([band, lo, hi]) => {
+      const g = both.filter((r) => r.valuation_b >= lo && r.valuation_b < hi);
+      const m = window.L1med(g.map((r) => r.headcount_yoy));
+      return { band, companies: g.length, median_yoy: m === null ? null : Math.round(m) };
+    });
+  }
+});
+
+dash.calc('size_stats', {
+  inputs: ['companies'],
+  title: 'Size versus growth',
+  description: 'Median growth below and above $30B, and the rank correlation of valuation and growth among private companies.',
+  fn: (companies) => {
+    const both = (companies || []).filter((r) => r.valuation_b !== null && r.headcount_yoy !== null);
+    const rank = (a) => { const idx = a.map((x, i) => [x, i]).sort((p, q) => p[0] - q[0]); const r = new Array(a.length); let i = 0; while (i < idx.length) { let j = i; while (j + 1 < idx.length && idx[j + 1][0] === idx[i][0]) j++; for (let k = i; k <= j; k++) r[idx[k][1]] = (i + j) / 2; i = j + 1; } return r; };
+    const priv = both.filter((r) => r.status === 'Private');
+    const rx = rank(priv.map((r) => r.valuation_b)), ry = rank(priv.map((r) => r.headcount_yoy));
+    const mx = d3.mean(rx), my = d3.mean(ry);
+    const num = d3.sum(rx, (x, i) => (x - mx) * (ry[i] - my));
+    const den = Math.sqrt(d3.sum(rx, (x) => (x - mx) ** 2) * d3.sum(ry, (y) => (y - my) ** 2));
+    return [{
+      under30_yoy: Math.round(window.L1med(both.filter((r) => r.valuation_b < 30).map((r) => r.headcount_yoy))),
+      over30_yoy: Math.round(window.L1med(both.filter((r) => r.valuation_b >= 30).map((r) => r.headcount_yoy))),
+      private_rank_corr: den ? Math.round(num / den * 100) / 100 : null
+    }];
+  }
+});
+
+dash.calc('trend', {
+  inputs: ['companies'],
+  title: 'Growth against the size trend',
+  description: 'Each company’s headcount growth compared with a straight-line fit of growth on log10 valuation.',
+  fn: (companies) => {
+    const both = (companies || []).filter((r) => r.valuation_b !== null && r.headcount_yoy !== null);
+    const xs = both.map((r) => Math.log10(r.valuation_b)), ys = both.map((r) => r.headcount_yoy);
+    const mx = d3.mean(xs), my = d3.mean(ys);
+    const b = d3.sum(xs, (x, i) => (x - mx) * (ys[i] - my)) / d3.sum(xs, (x) => (x - mx) ** 2);
+    const a = my - b * mx;
+    return both.map((r, i) => {
+      const expected = Math.round(a + b * xs[i]);
+      return { company: r.company, valuation_b: r.valuation_b, headcount_yoy: r.headcount_yoy, expected_yoy: expected, gap: Math.round(r.headcount_yoy - expected) };
+    }).sort((p, q) => q.gap - p.gap);
+  }
+});
+
+dash.calc('races', {
+  inputs: ['companies', 'tags'],
+  title: 'Category races',
+  description: 'For each category with two or more players reporting both figures, the most valuable player and the fastest-hiring one.',
+  fn: (companies, tags) => {
+    const raceOf = new Map(tags.map((t) => [t.company, t.race]));
+    const both = (companies || []).filter((r) => r.valuation_b !== null && r.headcount_yoy !== null && raceOf.get(r.company));
+    return Array.from(d3.group(both, (r) => raceOf.get(r.company)), ([race, g]) => {
+      const leader = g.slice().sort((p, q) => q.valuation_b - p.valuation_b)[0];
+      const fastest = g.slice().sort((p, q) => q.headcount_yoy - p.headcount_yoy)[0];
+      return { race, members: g.length, leader: leader.company, leader_yoy: leader.headcount_yoy, fastest: fastest.company, fastest_yoy: fastest.headcount_yoy, challenger_ahead: fastest.company !== leader.company ? 'Yes' : 'No' };
+    }).filter((r) => r.members >= 2).sort((p, q) => (q.fastest_yoy - q.leader_yoy) - (p.fastest_yoy - p.leader_yoy));
+  }
+});
+
+dash.calc('race_summary', {
+  inputs: ['races'],
+  title: 'Races led by a challenger',
+  description: 'How many category races have a challenger out-hiring the most valuable player.',
+  fn: (races) => [{ races: (races || []).length, challenger_ahead: (races || []).filter((r) => r.challenger_ahead === 'Yes').length }]
+});
+
+dash.calc('coverage', {
+  inputs: ['companies'],
+  title: 'Podcast coverage and growth',
+  description: 'Median growth and valuation for companies featured on Lenny’s Podcast versus never featured, among those reporting growth.',
+  fn: (companies) => {
+    const g = (companies || []).filter((r) => r.headcount_yoy !== null);
+    return [['Featured', (r) => r.podcast_episodes > 0], ['Not featured', (r) => !(r.podcast_episodes > 0)]].map(([group, f]) => {
+      const s = g.filter(f);
+      const mv = window.L1med(s.map((r) => r.valuation_b));
+      return { group, companies: s.length, median_yoy: Math.round(window.L1med(s.map((r) => r.headcount_yoy))), median_valuation_b: mv === null ? null : Math.round(mv * 10) / 10 };
+    });
+  }
+});
+
+dash.calc('patterns', {
+  inputs: ['companies', 'tags'],
+  title: 'Smaller patterns',
+  description: 'Median growth for physical-world companies under and over $30B, and for open-source versus other companies between $1B and $30B.',
+  fn: (companies, tags) => {
+    const os = new Map(tags.map((t) => [t.company, t.open_source]));
+    const both = (companies || []).filter((r) => r.valuation_b !== null && r.headcount_yoy !== null);
+    const md = (a) => Math.round(window.L1med(a.map((r) => r.headcount_yoy)));
+    const phys = both.filter((r) => r.stack === 'Physical world');
+    const mid = both.filter((r) => r.valuation_b >= 1 && r.valuation_b < 30);
+    const ps = phys.filter((r) => r.valuation_b < 30), pb = phys.filter((r) => r.valuation_b >= 30);
+    const op = mid.filter((r) => os.get(r.company) === 'Yes'), cl = mid.filter((r) => os.get(r.company) !== 'Yes');
+    return [{ physical_small_yoy: md(ps), physical_small_n: ps.length, physical_big_yoy: md(pb), physical_big_n: pb.length, open_yoy: md(op), open_n: op.length, closed_yoy: md(cl), closed_n: cl.length }];
+  }
+});
+
+dash.calc('by_stack', {
+  inputs: ['companies'],
+  title: 'By group',
+  description: 'Companies, combined valuation and median headcount growth for each of the five groups.',
+  fn: (companies) => window.L1group(companies || [], 'stack').sort((a, b) => b.companies - a.companies)
+});
+
+dash.calc('completeness', {
+  inputs: ['companies'],
+  title: 'Data completeness',
+  description: 'How many companies have each figure.',
+  fn: (companies) => {
+    const c = companies || [];
+    return [
+      { measure: 'Valuation', have: c.filter((r) => r.valuation_b !== null).length, total: c.length },
+      { measure: 'Headcount growth', have: c.filter((r) => r.headcount_yoy !== null).length, total: c.length },
+      { measure: 'Both figures', have: c.filter((r) => r.valuation_b !== null && r.headcount_yoy !== null).length, total: c.length },
+      { measure: 'Public market price', have: c.filter((r) => r.status === 'Public').length, total: c.length }
+    ];
+  }
+});
+
+dash.calc('status_split', {
+  inputs: ['companies'],
+  title: 'Public versus private',
+  description: 'Companies and combined valuation by listing status.',
+  fn: (companies) => {
+    const c = companies || [];
+    const total = d3.sum(c, (r) => r.valuation_b || 0);
+    return ['Public', 'Private'].map((s) => {
+      const g = c.filter((r) => r.status === s);
+      const v = d3.sum(g, (r) => r.valuation_b || 0);
+      return { status: s, companies: g.length, value_t: (Math.round(v / 100) / 10).toFixed(1), share_pct: total ? Math.round(v / total * 100) : null };
+    });
+  }
+});
+
+dash.calc('fastest', {
+  inputs: ['companies'],
+  title: 'Fastest hirers',
+  description: 'The eight companies with the highest headcount growth.',
+  fn: (companies) => (companies || []).filter((r) => r.headcount_yoy !== null)
+    .sort((a, b) => b.headcount_yoy - a.headcount_yoy).slice(0, 8)
+    .map((r) => ({ company: r.company, valuation_b: r.valuation_b === null ? '—' : String(r.valuation_b), headcount_yoy: r.headcount_yoy, website: r.website }))
+});
+
+dash.onData(() => {
+  document.querySelectorAll('#stack-legend .l1-sw').forEach((el) => { el.style.background = window.L1stackColor(el.dataset.stack); });
+});
+document.querySelectorAll('#sort-select').forEach((sel) => sel.addEventListener('change', () => { window.L1.sort = sel.value; dash.draw('explore'); }));
+</script>
+<script>
+const ok = (id) => { const d = dash.data(id); return d && d.status === 'ok' && Array.isArray(d.data) ? d.data : null; };
+const tipIn = (el) => {
+  let t = el.querySelector(':scope > .l1-tip');
+  if (!t) { t = document.createElement('div'); t.className = 'l1-tip'; t.hidden = true; el.appendChild(t); }
+  return {
+    show(ev, title, lines) {
+      t.replaceChildren();
+      const h = document.createElement('div'); h.className = 't'; h.textContent = title; t.appendChild(h);
+      lines.forEach((l) => { const d = document.createElement('div'); d.className = 's'; d.textContent = l; t.appendChild(d); });
+      t.hidden = false;
+      const b = el.getBoundingClientRect();
+      let x = ev.clientX - b.left + 12, y = ev.clientY - b.top + 12;
+      if (x + t.offsetWidth > el.clientWidth) x = Math.max(0, ev.clientX - b.left - t.offsetWidth - 12);
+      t.style.left = x + 'px'; t.style.top = y + 'px';
+    },
+    hide() { t.hidden = true; }
+  };
+};
+
+window.L1link = (name, url) => {
+  const a = document.createElement('a');
+  a.href = url || 'https://www.google.com/search?q=' + encodeURIComponent(name + ' company');
+  a.target = '_blank'; a.rel = 'noopener noreferrer';
+  a.textContent = name;
+  a.style.color = 'inherit'; a.style.textDecorationColor = 'var(--color-border-line)'; a.style.textUnderlineOffset = '3px';
+  return a;
+};
+const siteOf = (name) => { const r = (ok('companies') || []).find((x) => x.company === name); return r ? r.website : ''; };
+
+dash.draw('num', (el) => {
+  const d = dash.data(el.dataset.source);
+  el.classList.toggle('dash-skeleton', !d || d.status === 'loading');
+  const row = d && d.status === 'ok' && Array.isArray(d.data) ? d.data[+el.dataset.row || 0] : null;
+  const v = row ? row[el.dataset.field] : null;
+  if (v === null || v === undefined) { el.textContent = '—'; return; }
+  el.textContent = el.dataset.fmt === 'signed' && v > 0 ? '+' + v : String(v);
+});
+
+dash.draw('landscape', (el) => {
+  const rows = ok('companies'), layers = ok('by_layer');
+  if (!rows || !layers) { el.replaceChildren(); const p = document.createElement('p'); p.className = 'l1-cap'; p.textContent = dash.data('companies').status === 'error' ? 'Failed to load' : '—'; el.appendChild(p); return; }
+  el.replaceChildren();
+  const tip = tipIn(el);
+  layers.forEach((L) => {
+    const card = document.createElement('div'); card.className = 'l1-card l1-layer'; card.id = 'layer-' + L.layer.toLowerCase().replace(/[^a-z]+/g, '-');
+    const h = document.createElement('div'); h.className = 'l1-layer-h';
+    const b = document.createElement('b'); b.textContent = L.layer;
+    const m = document.createElement('span'); m.className = 'l1-cap';
+    const mv = document.createElement('span'); mv.dataset.source = 'by_layer'; mv.dataset.field = 'value_b'; mv.dataset.where = 'layer=' + encodeURIComponent(L.layer);
+    mv.textContent = d3.format(',')(L.value_b);
+    m.append(L.companies + ' · $', mv, 'B');
+    h.append(b, m);
+    const s = document.createElement('div'); s.className = 'l1-cap'; s.textContent = L.stack + ' · median growth ' + (L.median_yoy === null ? 'n/a' : (L.median_yoy > 0 ? '+' : '') + L.median_yoy + '%');
+    const chips = document.createElement('div'); chips.className = 'l1-chips';
+    rows.filter((r) => r.layer === L.layer).sort((a, b2) => (b2.valuation_b ?? -1) - (a.valuation_b ?? -1)).forEach((r) => {
+      const c = document.createElement('div'); c.className = 'l1-chip'; c.tabIndex = 0;
+      
+      const n = document.createElement('span'); n.className = 'n'; n.appendChild(window.L1link(r.company, r.website));
+      const meta = document.createElement('span'); meta.className = 'm';
+      const v = document.createElement('span'); v.dataset.source = 'companies'; v.dataset.field = 'val_label'; v.dataset.where = 'company=' + encodeURIComponent(r.company); v.textContent = r.val_label;
+      const y = document.createElement('span'); y.dataset.source = 'companies'; y.dataset.field = 'yoy_label'; y.dataset.where = 'company=' + encodeURIComponent(r.company); y.textContent = r.yoy_label;
+      meta.append(v, ' · ', y);
+      c.append(n, meta);
+      const lines = [r.description, (r.status) + ' · ' + r.revenue_model, 'Buyer: ' + r.primary_buyer + (r.podcast_episodes ? ' · ' + r.podcast_episodes + ' podcast ep.' : '')];
+      c.addEventListener('pointerenter', (ev) => tip.show(ev, r.company, lines));
+      c.addEventListener('pointermove', (ev) => tip.show(ev, r.company, lines));
+      c.addEventListener('pointerleave', () => tip.hide());
+      c.addEventListener('focus', () => { const bb = c.getBoundingClientRect(); tip.show({ clientX: bb.left, clientY: bb.bottom }, r.company, lines); });
+      c.addEventListener('blur', () => tip.hide());
+      chips.appendChild(c);
+    });
+    card.append(h, s, chips);
+    el.appendChild(card);
+  });
+});
+
+dash.draw('scatter', (el) => {
+  const all = ok('companies');
+  if (!all) { el.replaceChildren(); return; }
+  const rows = all.filter((r) => r.valuation_b !== null && r.headcount_yoy !== null);
+  el.replaceChildren();
+  const W = el.clientWidth || 600, H = 340;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', 'Scatter plot of company valuation against headcount growth');
+  const m = { t: 12, r: 16, b: 32, l: 44 };
+  const x = d3.scaleLog().domain([0.8, d3.max(rows, (r) => r.valuation_b) * 1.3]).range([m.l, W - m.r]);
+  const y = d3.scaleLinear().domain([Math.min(0, d3.min(rows, (r) => r.headcount_yoy)) - 10, d3.max(rows, (r) => r.headcount_yoy) + 20]).nice().range([H - m.b, m.t]);
+  const ticks = [1, 10, 100, 1000].filter((t) => t >= x.domain()[0] && t <= x.domain()[1]);
+  const fx = (t) => (t >= 1000 ? '$' + t / 1000 + 'T' : '$' + t + 'B');
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickValues(ticks).tickFormat(fx).tickSize(-(H - m.t - m.b)))
+    .call((g) => { g.select('.domain').remove(); g.selectAll('line').style('stroke', 'var(--cds-chart-grid)'); });
+  const ya = svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat((v) => v + '%').tickSize(-(W - m.l - m.r)))
+    .call((g) => { g.select('.domain').remove(); g.selectAll('line').style('stroke', 'var(--cds-chart-grid)'); });
+  const med = d3.median(rows, (r) => r.headcount_yoy);
+  svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(med)).attr('y2', y(med)).style('stroke', 'var(--cds-chart-reference)').style('stroke-dasharray', '4 4');
+  svg.append('text').attr('x', W - m.r).attr('y', y(med) - 4).attr('text-anchor', 'end').text('median ' + Math.round(med) + '%');
+  const tip = tipIn(el);
+  svg.append('g').selectAll('circle').data(rows).join('circle')
+    .attr('cx', (r) => x(r.valuation_b)).attr('cy', (r) => y(r.headcount_yoy)).attr('r', 4)
+    .style('fill', (r) => (r.valuation_b >= 400 || r.headcount_yoy >= 280 ? window.L1accent() : window.L1stackColor())).style('fill-opacity', (r) => (r.valuation_b >= 400 || r.headcount_yoy >= 280 ? 1 : 0.55)).style('stroke', 'var(--color-bg)')
+    .on('pointerenter pointermove', (ev, r) => tip.show(ev, r.company, [r.val_label + ' · ' + r.yoy_label + ' headcount', r.layer, r.description]))
+    .on('pointerleave', () => tip.hide());
+  if (W >= 420) {
+    const lab = rows.filter((r) => r.valuation_b >= 400 || r.headcount_yoy >= 280);
+    svg.append('g').selectAll('text').data(lab).join('text').attr('class', 'l1-lab')
+      .attr('x', (r) => x(r.valuation_b) + (x(r.valuation_b) > W - 90 ? -8 : 8)).attr('y', (r) => y(r.headcount_yoy) + 4)
+      .attr('text-anchor', (r) => (x(r.valuation_b) > W - 90 ? 'end' : 'start')).text((r) => r.company);
+  }
+});
+
+dash.draw('bars', (el) => {
+  const rows0 = ok(el.dataset.source);
+  if (!rows0) { el.replaceChildren(); return; }
+  const lk = el.dataset.label, vk = el.dataset.value, min = el.dataset.min ? +el.dataset.min : -Infinity;
+  const rows0f = rows0.filter((r) => r[vk] !== null && r[vk] >= min);
+  const rows = el.dataset.keepOrder ? rows0f : rows0f.slice().sort((a, b) => b[vk] - a[vk]);
+  el.replaceChildren();
+  const W = el.clientWidth || 400, bh = 24, H = rows.length * bh + 8;
+  const fmt = el.dataset.fmt === 'usd' ? (v) => '$' + d3.format(',')(v) + 'B' : el.dataset.fmt === 'pct' ? (v) => (v > 0 ? '+' : '') + v + '%' : (v) => String(v);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', 'Bar chart of ' + vk.replace(/_/g, ' ') + ' by ' + lk.replace(/_/g, ' '));
+  const probe = svg.append('g');
+  const lw = d3.max(rows, (r) => probe.append('text').text(r[lk]).node().getComputedTextLength()) || 80;
+  const vw = d3.max(rows, (r) => probe.append('text').text(fmt(r[vk])).node().getComputedTextLength()) || 40;
+  probe.remove();
+  const x0 = Math.min(lw + 8, W * 0.45);
+  const x = d3.scaleLinear().domain([0, d3.max(rows, (r) => r[vk]) || 1]).range([0, Math.max(10, W - x0 - vw - 10)]);
+  const color = window.L1stackColor();
+  const topVal = d3.max(rows, (r) => r[vk]);
+  const tip = tipIn(el);
+  const g = svg.selectAll('g.row').data(rows).join('g').attr('class', 'row').attr('transform', (r, i) => `translate(0,${i * bh + 4})`);
+  g.append('text').attr('x', x0 - 8).attr('y', bh / 2).attr('dy', '0.32em').attr('text-anchor', 'end').attr('class', 'l1-lab').text((r) => r[lk]);
+  g.append('rect').attr('x', x0).attr('y', bh / 2 - 3).attr('height', 6).attr('rx', 1).attr('width', (r) => Math.max(1, x(r[vk]))).style('fill', (r) => (r[vk] === topVal ? window.L1accent() : color))
+    .on('pointerenter pointermove', (ev, r) => tip.show(ev, r[lk], [fmt(r[vk]) + (r.companies ? ' · ' + r.companies + ' companies' : '')]))
+    .on('pointerleave', () => tip.hide());
+  g.append('text').attr('x', (r) => x0 + x(r[vk]) + 6).attr('y', bh / 2).attr('dy', '0.32em').text((r) => fmt(r[vk]));
+});
+
+dash.draw('trendtable', (tb) => {
+  const rows0 = ok('trend');
+  tb.replaceChildren();
+  if (!rows0) return;
+  const n = +tb.dataset.count || 8;
+  const rows = tb.dataset.dir === 'bottom' ? rows0.slice(-n).reverse() : rows0.slice(0, n);
+  const sg = (v) => (v > 0 ? '+' : '') + v;
+  rows.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.company);
+    [[window.L1link(r.company, siteOf(r.company)), ''], [String(r.valuation_b), 'r'], [sg(r.headcount_yoy), 'r'], [sg(r.expected_yoy), 'r'], [sg(r.gap), 'r']].forEach(([v, c]) => {
+      const td = document.createElement('td'); if (c) td.className = c; if (typeof v === 'string') td.textContent = v; else td.appendChild(v); tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('racetable', (tb) => {
+  const rows = ok('races');
+  tb.replaceChildren();
+  if (!rows) return;
+  const sg = (v) => (v > 0 ? '+' : '') + v;
+  rows.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.race);
+    [[r.race, ''], [String(r.members), 'r'], [window.L1link(r.leader, siteOf(r.leader)), ''], [sg(r.leader_yoy), 'r'], [window.L1link(r.fastest, siteOf(r.fastest)), ''], [sg(r.fastest_yoy), 'r'], [r.challenger_ahead, r.challenger_ahead === 'Yes' ? 'yes' : 'no']].forEach(([v, c]) => {
+      const td = document.createElement('td'); if (c) td.className = c; if (c === 'yes') td.style.color = dash.colors[0]; if (typeof v === 'string') td.textContent = v; else td.appendChild(v); tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('grouptable', (tb) => {
+  const rows = ok(tb.dataset.source);
+  tb.replaceChildren();
+  if (!rows) return;
+  const k = tb.dataset.key;
+  rows.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r[k]);
+    [[r[k], ''], [r.companies, 'r'], [d3.format(',')(r.value_b), 'r'], [r.median_yoy === null ? '—' : (r.median_yoy > 0 ? '+' : '') + r.median_yoy, 'r'], [r.examples, '']].forEach(([v, c]) => {
+      const td = document.createElement('td'); if (c) td.className = c; td.textContent = v; tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('layer-select', (sel) => {
+  const L = ok('by_layer') || [];
+  sel.replaceChildren(new Option('All layers', ''), ...L.map((r) => new Option(r.layer, r.layer)));
+  sel.value = window.L1.layer;
+  sel.onchange = () => { window.L1.layer = sel.value; dash.draw('explore'); };
+});
+
+dash.draw('explore', (tb) => {
+  const rows0 = ok('companies');
+  tb.replaceChildren();
+  if (!rows0) return;
+  const s = window.L1.sort;
+  const rows = rows0.filter((r) => !window.L1.layer || r.layer === window.L1.layer).slice()
+    .sort((a, b) => (s === 'company' ? a.company.localeCompare(b.company) : (b[s] ?? -Infinity) - (a[s] ?? -Infinity)));
+  rows.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.company);
+    [[window.L1link(r.company, r.website), ''], [r.description, ''], [r.layer, ''], [r.valuation_b === null ? '—' : String(r.valuation_b), 'r'], [r.headcount_yoy === null ? '—' : (r.headcount_yoy > 0 ? '+' : '') + r.headcount_yoy, 'r'], [r.revenue_model, ''], [r.primary_buyer, ''], [r.status, ''], [r.website ? window.L1link(r.website.replace(/^https:\/\//, ''), r.website) : (() => { const a = window.L1link('search', ''); a.href = 'https://www.google.com/search?q=' + encodeURIComponent(r.company + ' company'); return a; })(), 'site']].forEach(([v, c]) => {
+      const td = document.createElement('td'); if (c) td.className = c; if (typeof v === 'string') td.textContent = v; else td.appendChild(v); tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+if (location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); }
+
+const L1fmt = (kind, v) => {
+  if (v === null || v === undefined || v === '') return '—';
+  if (kind === 'int') return String(v);
+  if (kind === 'comma') return d3.format(',')(v);
+  if (kind === 'signed') return (v > 0 ? '+' : '') + v;
+  if (kind === 'pct') return v + '%';
+  return String(v);
+};
+
+dash.draw('rows', (tb) => {
+  const rows = ok(tb.dataset.source);
+  tb.replaceChildren();
+  if (!rows) return;
+  const cols = (tb.dataset.cols || '').split(',').map((c) => c.split(':'));
+  const key = tb.dataset.key;
+  rows.forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r[key]);
+    cols.forEach(([f, kind]) => {
+      const td = document.createElement('td');
+      if (kind !== 'text' && kind !== 'link') td.className = 'r';
+      if (kind === 'link') td.appendChild(window.L1link(r[f], r.website || ''));
+      else td.textContent = L1fmt(kind, r[f]);
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+});
+
+dash.draw('meters', (el) => {
+  const rows = ok('completeness');
+  el.replaceChildren();
+  if (!rows) return;
+  rows.forEach((r) => {
+    const m = document.createElement('div'); m.className = 'l1-meter';
+    const l = document.createElement('span'); l.textContent = r.measure;
+    const v = document.createElement('span'); v.className = 'v'; v.textContent = r.have + ' of ' + r.total;
+    const trk = document.createElement('div'); trk.className = 'trk';
+    const b = document.createElement('b'); b.style.width = (r.total ? r.have / r.total * 100 : 0) + '%'; b.style.background = window.L1stackColor();
+    trk.appendChild(b); m.append(l, v, trk); el.appendChild(m);
+  });
+});
+
+dash.draw('slope', (el) => {
+  const rows0 = ok('by_layer');
+  el.replaceChildren();
+  if (!rows0) return;
+  const rows = rows0.filter((r) => r.median_yoy !== null);
+  const byV = rows.slice().sort((a, b) => b.value_b - a.value_b), byG = rows.slice().sort((a, b) => b.median_yoy - a.median_yoy);
+  const rv = new Map(byV.map((r, i) => [r.layer, i])), rg = new Map(byG.map((r, i) => [r.layer, i]));
+  const best = rows.slice().sort((a, b) => (rv.get(b.layer) - rg.get(b.layer)) - (rv.get(a.layer) - rg.get(a.layer)))[0];
+  const W = el.clientWidth || 600, step = 26, H = rows.length * step + 30;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', 'Slope chart of each layer’s rank by value against its rank by hiring growth');
+  const probe = svg.append('g');
+  const lw = d3.max(rows, (r) => probe.append('text').attr('class', 'l1-lab').text(r.layer).node().getComputedTextLength()) || 140;
+  probe.remove();
+  const narrow = W < 520;
+  const x0 = narrow ? 8 : lw + 14, x1 = narrow ? W - 8 : W - lw - 14;
+  const y = (i) => 24 + i * step;
+  svg.append('text').attr('x', x0).attr('y', 10).attr('text-anchor', narrow ? 'start' : 'middle').text('By value');
+  svg.append('text').attr('x', x1).attr('y', 10).attr('text-anchor', narrow ? 'end' : 'middle').text('By growth');
+  const tip = tipIn(el);
+  rows.forEach((r) => {
+    const hi = r.layer === best.layer;
+    const col = hi ? window.L1accent() : window.L1stackColor();
+    const g = svg.append('g').style('opacity', hi ? 1 : 0.7);
+    g.append('line').attr('x1', x0).attr('x2', x1).attr('y1', y(rv.get(r.layer))).attr('y2', y(rg.get(r.layer))).style('stroke', col).style('stroke-width', hi ? 2.5 : 1.2);
+    g.append('circle').attr('cx', x0).attr('cy', y(rv.get(r.layer))).attr('r', 3).style('fill', col);
+    g.append('circle').attr('cx', x1).attr('cy', y(rg.get(r.layer))).attr('r', 3).style('fill', col);
+    if (!narrow) {
+      g.append('text').attr('class', 'l1-lab').attr('x', x0 - 8).attr('y', y(rv.get(r.layer))).attr('dy', '0.32em').attr('text-anchor', 'end').text(r.layer);
+      g.append('text').attr('class', 'l1-lab').attr('x', x1 + 8).attr('y', y(rg.get(r.layer))).attr('dy', '0.32em').text(r.layer);
+    }
+    g.on('pointerenter pointermove', (ev) => tip.show(ev, r.layer, ['#' + (rv.get(r.layer) + 1) + ' by value ($' + d3.format(',')(r.value_b) + 'B)', '#' + (rg.get(r.layer) + 1) + ' by growth (' + (r.median_yoy > 0 ? '+' : '') + r.median_yoy + '%)']))
+      .on('pointerleave', () => tip.hide());
+  });
+});
+
+dash.draw('trendplot', (el) => {
+  const rows = ok('trend');
+  el.replaceChildren();
+  if (!rows) return;
+  const W = el.clientWidth || 600, H = 320, m = { t: 12, r: 16, b: 30, l: 44 };
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', 'Scatter of headcount growth against valuation with the fitted trend line');
+  const x = d3.scaleLog().domain([0.8, d3.max(rows, (r) => r.valuation_b) * 1.3]).range([m.l, W - m.r]);
+  const y = d3.scaleLinear().domain([Math.min(0, d3.min(rows, (r) => r.headcount_yoy)) - 10, d3.max(rows, (r) => r.headcount_yoy) + 20]).nice().range([H - m.b, m.t]);
+  svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickValues([1, 10, 100, 1000]).tickFormat((t) => (t >= 1000 ? '$' + t / 1000 + 'T' : '$' + t + 'B')).tickSize(-(H - m.t - m.b)))
+    .call((g) => { g.select('.domain').remove(); g.selectAll('line').style('stroke', 'var(--cds-chart-grid)'); });
+  svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat((v) => v + '%').tickSize(-(W - m.l - m.r)))
+    .call((g) => { g.select('.domain').remove(); g.selectAll('line').style('stroke', 'var(--cds-chart-grid)'); });
+  const line = rows.slice().sort((a, b) => a.valuation_b - b.valuation_b);
+  svg.append('path').datum(line).attr('d', d3.line().x((r) => x(r.valuation_b)).y((r) => y(r.expected_yoy))).style('fill', 'none').style('stroke', 'var(--cds-chart-reference)').style('stroke-dasharray', '4 4');
+  const top = new Set(rows.slice(0, 8).map((r) => r.company)), bot = new Set(rows.slice(-8).map((r) => r.company));
+  const tip = tipIn(el);
+  svg.append('g').selectAll('circle').data(rows).join('circle')
+    .attr('cx', (r) => x(r.valuation_b)).attr('cy', (r) => y(r.headcount_yoy)).attr('r', (r) => (top.has(r.company) || bot.has(r.company) ? 4.5 : 3.5))
+    .style('fill', (r) => (top.has(r.company) ? window.L1accent() : bot.has(r.company) ? 'var(--color-fg)' : window.L1stackColor()))
+    .style('fill-opacity', (r) => (top.has(r.company) || bot.has(r.company) ? 1 : 0.35))
+    .on('pointerenter pointermove', (ev, r) => tip.show(ev, r.company, ['Actual ' + (r.headcount_yoy > 0 ? '+' : '') + r.headcount_yoy + '% · expected ' + (r.expected_yoy > 0 ? '+' : '') + r.expected_yoy + '%', 'Gap ' + (r.gap > 0 ? '+' : '') + r.gap + ' pts']))
+    .on('pointerleave', () => tip.hide());
+  if (W >= 460) {
+    const lab = rows.slice(0, 3).concat(rows.slice(-2));
+    svg.append('g').selectAll('text').data(lab).join('text').attr('class', 'l1-lab')
+      .attr('x', (r) => x(r.valuation_b) + (x(r.valuation_b) > W - 100 ? -8 : 8)).attr('y', (r) => y(r.headcount_yoy) + 4)
+      .attr('text-anchor', (r) => (x(r.valuation_b) > W - 100 ? 'end' : 'start')).text((r) => r.company);
+  }
+});
+
+dash.draw('dumbbell', (el) => {
+  const rows = ok('races');
+  el.replaceChildren();
+  if (!rows) return;
+  const W = el.clientWidth || 600, step = 26, H = rows.length * step + 34;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', H).attr('viewBox', `0 0 ${W} ${H}`)
+    .attr('role', 'img').attr('aria-label', 'Dumbbell chart of hiring growth for each category’s most valuable company and its fastest hirer');
+  const probe = svg.append('g');
+  const lw = Math.min(W * 0.42, d3.max(rows, (r) => probe.append('text').attr('class', 'l1-lab').text(r.race).node().getComputedTextLength()) || 140);
+  probe.remove();
+  const x0 = lw + 12;
+  const x = d3.scaleLinear().domain([0, d3.max(rows, (r) => Math.max(r.leader_yoy, r.fastest_yoy)) * 1.08]).nice().range([x0, W - 16]);
+  svg.append('g').attr('transform', `translate(0,${H - 22})`).call(d3.axisBottom(x).ticks(5).tickFormat((v) => '+' + v + '%').tickSize(-(H - 30)))
+    .call((g) => { g.select('.domain').remove(); g.selectAll('line').style('stroke', 'var(--cds-chart-grid)'); });
+  const tip = tipIn(el);
+  rows.forEach((r, i) => {
+    const yy = 12 + i * step;
+    const g = svg.append('g');
+    g.append('text').attr('class', 'l1-lab').attr('x', x0 - 10).attr('y', yy).attr('dy', '0.32em').attr('text-anchor', 'end').text(r.race);
+    if (r.challenger_ahead === 'Yes') g.append('line').attr('x1', x(r.leader_yoy)).attr('x2', x(r.fastest_yoy)).attr('y1', yy).attr('y2', yy).style('stroke', 'var(--color-border-line)').style('stroke-width', 3);
+    g.append('circle').attr('cx', x(r.leader_yoy)).attr('cy', yy).attr('r', 5).style('fill', window.L1stackColor());
+    if (r.challenger_ahead === 'Yes') g.append('circle').attr('cx', x(r.fastest_yoy)).attr('cy', yy).attr('r', 5).style('fill', window.L1accent());
+    g.on('pointerenter pointermove', (ev) => tip.show(ev, r.race, [r.leader + ' (most valuable): +' + r.leader_yoy + '%', r.challenger_ahead === 'Yes' ? r.fastest + ' (fastest): +' + r.fastest_yoy + '%' : 'The leader is also the fastest hirer']))
+      .on('pointerleave', () => tip.hide());
+  });
+});
+</script>
+<script>window.L1runAll();</script>
+<script>
+(() => {
+  const panels = () => document.querySelectorAll('.l1-rail-panel[data-panel]');
+  const navs = () => document.querySelectorAll('.l1-side a[data-nav]');
+  let current = 'top';
+  const show = (id) => {
+    if (id === current) return;
+    let found = false;
+    panels().forEach((p) => { if (p.dataset.panel === id) found = true; });
+    if (!found) return;
+    current = id;
+    panels().forEach((p) => { p.hidden = p.dataset.panel !== id; });
+    navs().forEach((a) => { a.classList.toggle('is-active', a.dataset.nav === id); if (a.dataset.nav === id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    const p = document.querySelector('.l1-rail-panel[data-panel="' + id + '"]');
+    if (p) new Set(Array.from(p.querySelectorAll('[data-draw]')).map((e) => e.dataset.draw)).forEach((n) => dash.draw(n));
+  };
+  navs().forEach((a) => { if (a.dataset.nav === 'top') a.classList.add('is-active'); });
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) show(e.target.id); });
+  }, { root: document, rootMargin: '-35% 0px -60% 0px' });
+  document.querySelectorAll('.l1-main > .l1-sec[id]').forEach((s) => io.observe(s));
+})();
+</script>
+</body>
+</html>
